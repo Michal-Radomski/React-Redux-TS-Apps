@@ -1,7 +1,27 @@
-import "./App.scss";
+import {connect} from "react-redux";
 
-function App() {
-  return <div>App</div>;
+import "./App.scss";
+import {simpleAction} from "./action/simpleAction";
+
+function App(props) {
+  const simpleAction = () => {
+    props.simpleAction();
+  };
+
+  return (
+    <div>
+      <button onClick={simpleAction}>Test redux action</button>
+      <pre>{JSON.stringify(props)}</pre>
+    </div>
+  );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  ...state,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  simpleAction: () => dispatch(simpleAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
