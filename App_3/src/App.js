@@ -12,6 +12,7 @@ function App(props) {
     <div>
       <button onClick={simpleAction}>Test redux action</button>
       <pre>{JSON.stringify(props)}</pre>
+      {/* {console.log(props)} */}
     </div>
   );
 }
