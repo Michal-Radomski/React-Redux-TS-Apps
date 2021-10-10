@@ -9,3 +9,9 @@ interface Props {
   todo: Todo | any;
   toggleTodo: ToggleTodo;
 }
+
+type AddTodo = (text: string) => void;
+
+interface Props2 {
+  addTodo: AddTodo;
+}

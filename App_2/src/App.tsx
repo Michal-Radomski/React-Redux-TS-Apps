@@ -1,6 +1,7 @@
 import React from "react";
 import "./app.scss";
 import TodoList from "./TodoList";
+import AddTodoForm from "./AddTodoForm";
 
 const initialState: Todo[] = [
   {
@@ -16,7 +17,7 @@ const initialState: Todo[] = [
 function App() {
   const [todos, setTodos] = React.useState(initialState);
 
-  const toggleTodo = (selectedTodo: Todo) => {
+  const toggleTodo: ToggleTodo = (selectedTodo: Todo) => {
     const newTodos = todos.map((todo) => {
       if (todo === selectedTodo) {
         return {
@@ -29,11 +30,18 @@ function App() {
     setTodos(newTodos);
   };
 
+  const addTodo: AddTodo = (text: string) => {
+    const newTodo = {text, complete: false};
+    setTodos([...todos, newTodo]);
+  };
+
   return (
     <React.Fragment>
       <ul>
         <TodoList todo={todos} toggleTodo={toggleTodo} />
       </ul>
+      <br />
+      <AddTodoForm addTodo={addTodo} />
     </React.Fragment>
   );
 }
