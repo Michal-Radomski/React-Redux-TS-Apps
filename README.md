@@ -13,3 +13,5 @@ Applications written in **TS using React and Redux**:
 
    Migration a react app from JS to TS is done according to this
    [tutorial](https://www.sitepoint.com/how-to-migrate-a-react-app-to-typescript/)
+
+4. App_4 (React+Redux) is written according to this [tutorial](https://chriscourses.com/blog/redux)
