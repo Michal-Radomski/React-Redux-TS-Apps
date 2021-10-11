@@ -1,7 +1,7 @@
 /*
  src/reducers/simpleReducer.js
 */
-const simpleReducer = (state = {}, action) => {
+const simpleReducer = (state = {}, action: Action) => {
   switch (action.type) {
     case "SIMPLE_ACTION":
       return {

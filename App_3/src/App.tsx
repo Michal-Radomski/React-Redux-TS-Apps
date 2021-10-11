@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import "./App.scss";
 import {simpleAction} from "./action/simpleAction";
 
-function App(props) {
+function App(props: any): JSX.Element {
   const simpleAction = () => {
     props.simpleAction();
   };
@@ -17,11 +17,11 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   ...state,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: DispatchType) => ({
   simpleAction: () => dispatch(simpleAction()),
 });
 
