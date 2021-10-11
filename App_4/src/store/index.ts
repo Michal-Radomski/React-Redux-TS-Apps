@@ -1,9 +1,9 @@
 // Redux Store
 
-import {createStore} from "redux";
+import {createStore, compose} from "redux";
 
 // State
-const initialState = {
+const initialState: State = {
   posts: [{id: -1, title: "Test Post"}],
   loginModal: {
     open: false,
@@ -11,7 +11,7 @@ const initialState = {
 };
 
 // Reducer
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: Action): State => {
   if (action.type === "ADD_POST") {
     return Object.assign({}, state, {
       posts: state.posts.concat(action.payload),
@@ -28,11 +28,21 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-const store = createStore(
-  reducer,
-  // Below tine to connect the Store with Redux DevTools
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// const store = createStore(
+//   reducer,
+//   //- Below is the Line to connect the Store with Redux DevTools
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// );
+
+const store = createStore(reducer, composeEnhancers());
 
 export default store;
 

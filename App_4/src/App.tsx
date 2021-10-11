@@ -2,9 +2,9 @@ import React from "react";
 import {connect} from "react-redux";
 import "./App.scss";
 
-class App extends React.Component {
-  constructor() {
-    super();
+class App extends React.Component<{dispatch: AppDispatch; posts: Posts}, {value: string; postId: number}> {
+  constructor(state: State | any) {
+    super(state);
     this.state = {
       value: "",
       postId: -2,
@@ -25,11 +25,11 @@ class App extends React.Component {
       });
   }
 
-  handleChange = (event) => {
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({value: event.target.value});
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = (event: React.SyntheticEvent) => {
     // alert("Content submitted: " + this.state.value);
     event.preventDefault();
     this.props.dispatch({
@@ -53,7 +53,7 @@ class App extends React.Component {
           </div>
         </form>
         <ul>
-          {this.props.posts.map((post) => (
+          {this.props.posts.map((post: Post) => (
             <li key={post.id}>{post.title}</li>
           ))}
         </ul>
@@ -62,11 +62,11 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: State) => {
   return {posts: state.posts};
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
     dispatch,
   };
