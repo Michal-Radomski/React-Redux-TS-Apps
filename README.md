@@ -18,3 +18,6 @@ Applications written in **TS using React and Redux**:
 
 5. App_5 (React+Redux+TS) is written according to this
    [tutorial](https://www.newline.co/@satansdeer/using-react-redux-with-typescript--6ea90757)
+
+6. App_6 (React+Redux+TS) is written according to this
+   [tutorial](https://dev.to/tris909/how-to-use-redux-with-typescript-1oag)
