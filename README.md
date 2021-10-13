@@ -14,10 +14,15 @@ Applications written in **TS using React and Redux**:
    Migration a react app from JS to TS is done according to this
    [tutorial](https://www.sitepoint.com/how-to-migrate-a-react-app-to-typescript/)
 
-4. App_4 (React+Redux+TS) is written according to this [tutorial](https://chriscourses.com/blog/redux), migration like above
+4. App_4 (React+Redux+TS) is written according to this [tutorial](https://chriscourses.com/blog/redux), migration JS->TS like
+   above
 
 5. App_5 (React+Redux+TS) is written according to this
    [tutorial](https://www.newline.co/@satansdeer/using-react-redux-with-typescript--6ea90757)
 
 6. App_6 (React+Redux+TS) is written according to this
    [tutorial](https://dev.to/tris909/how-to-use-redux-with-typescript-1oag)
+
+7. App_7 (React+Redux+TS) is written according to this
+   [tutorial](https://www.codingame.com/playgrounds/9169/simple-redux-create-delete-contact-application), migration JS->TS
+   like above
