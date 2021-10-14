@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import * as contactAction from "./actions/contactAction";
 
-class App extends React.Component<Props, State> {
+class App extends React.Component<MyProps, State> {
   constructor(props: Props) {
     super(props);
     // this.handleChange = this.handleChange.bind(this);
@@ -23,18 +23,19 @@ class App extends React.Component<Props, State> {
 
   handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    console.log(this.state["name"]);
+    // console.log(this.state.name);
+    let contact = {
+      name: this.state.name,
+    };
     this.props.createContact(contact);
     this.setState({name: ""});
   };
 
-  listView(data: Contact, index: ID) {
+  listView(data: Contact, index: ID | any) {
     return (
-      <div className="row">
+      <div key={index} className="row">
         <div className="col-md-10">
-          <li key={index} className="list-group-item clearfix">
-            {data.name}
-          </li>
+          <li className="list-group-item clearfix">{data.name}</li>
         </div>
         <div className="col-md-2">
           <button onClick={(e) => this.deleteContact(e, index)} className="btn btn-danger">

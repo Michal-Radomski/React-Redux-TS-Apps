@@ -8,6 +8,8 @@ interface Props {
   contact?: string;
 }
 
+type MyProps = Props | State;
+
 interface Contact {
   contact?: string;
   payload?: string;
@@ -19,9 +21,15 @@ type Contacts = Contact[];
 type Action = {type: string; payload: string};
 
 type ID = {
-  id: any;
+  id: number;
 };
 
 interface OwnProps {
   prop?: any;
+}
+
+type Function = (name: string) => void;
+
+interface CustomWindow extends Window {
+  store?: any;
 }
