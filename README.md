@@ -29,4 +29,4 @@ Applications written in **TS using React and Redux**:
 
 8. App_8 (React+Redux+TS) is written according to this
    [tutorial](https://dev.to/codebucks/build-redux-react-todo-list-app-with-animations-using-framer-motion-1mp1), migration
-   JS->TS like above
+   JS->TS like above. Fonts Joy Neon were taken from [here](https://www.fontspace.com/joy-neon-font-f47613)
