@@ -55,7 +55,7 @@ export default store;
 //- Your current state (JavaScript object)
 //- An action (also a JavaScript object)
 
-//+ Redux actions are JavaScript objects that contain two properties: type and payload.
+//+ Redux actions creators are JavaScript objects that contain two properties: type and payload.
 //- These actions are "dispatched," or used as arguments by the Redux store's dispatch API method.
 
 // + Redux action:

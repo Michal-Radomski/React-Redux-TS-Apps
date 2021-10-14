@@ -6,3 +6,10 @@ export const createContact = (contact: Contact) => {
     contact: contact,
   };
 };
+
+export const deleteContact = (id: ID) => {
+  return {
+    type: actionTypes.REMOVE_CONTACT,
+    id: id,
+  };
+};
