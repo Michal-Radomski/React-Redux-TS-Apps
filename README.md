@@ -26,3 +26,7 @@ Applications written in **TS using React and Redux**:
 7. App_7 (React+Redux+TS) is written according to this
    [tutorial](https://www.codingame.com/playgrounds/9169/simple-redux-create-delete-contact-application), migration JS->TS
    like above
+
+8. App_8 (React+Redux+TS) is written according to this
+   [tutorial](https://dev.to/codebucks/build-redux-react-todo-list-app-with-animations-using-framer-motion-1mp1), migration
+   JS->TS like above
