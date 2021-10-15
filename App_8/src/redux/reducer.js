@@ -4,7 +4,7 @@ const initialState = [];
 
 const addTodoReducer = createSlice({
   name: "todos",
-  initialState,
+  initialState: initialState,
   reducers: {
     //- Reducers:
     // Adding Todos

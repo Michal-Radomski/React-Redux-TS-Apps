@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import {connect} from "react-redux";
-import {addTodos, completeTodos, removeTodos, updateTodos} from "../redux/reducer";
-import TodoItem from "./TodoItem";
 import {AnimatePresence, motion} from "framer-motion";
 
+import {addTodos, completeTodos, removeTodos, updateTodos} from "../redux/reducer";
+import TodoItem from "./TodoItem";
+
 const DisplayTodos = (props) => {
-  const [sort, setSort] = useState("active");
+  const [sort, setSort] = React.useState("active");
   return (
     <div className="displaytodos">
       <div className="buttons">
@@ -16,7 +17,7 @@ const DisplayTodos = (props) => {
           Completed
         </motion.button>
         <motion.button whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} onClick={() => setSort("all")}>
-          All
+          All Cards
         </motion.button>
       </div>
       <ul>

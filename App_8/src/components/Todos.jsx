@@ -24,12 +24,11 @@ const Todos = (props) => {
     }
   };
 
-  console.log("props", props);
+  // console.log("Todos-props from store:", props);
 
   return (
     <div className="addTodos">
-      <input type="text" onChange={(e) => handleChange(e)} className="todo-input" value={todo} />
-
+      <input type="text" onChange={(event) => handleChange(event)} className="todo-input" value={todo} />
       <motion.button whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} className="add-btn" onClick={() => add()}>
         <GoPlus />
       </motion.button>
