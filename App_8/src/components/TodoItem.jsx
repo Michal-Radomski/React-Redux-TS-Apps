@@ -44,7 +44,12 @@ const TodoItem = (props) => {
         onKeyPress={(event) => update(item.id, inputRef.current.value, event)}
       />
       <div className="btns">
-        <motion.button whileHover={{scale: 1.4}} whileTap={{scale: 0.9}} onClick={() => changeFocus()}>
+        <motion.button
+          whileHover={{scale: 1.4}}
+          whileTap={{scale: 0.9}}
+          onClick={() => changeFocus()}
+          style={{color: "darkBlue"}}
+        >
           <AiFillEdit />
         </motion.button>
         {item.completed === false && (
