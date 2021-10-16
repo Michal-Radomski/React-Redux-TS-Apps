@@ -8,3 +8,5 @@ node_modules/
 
 # My Entries
 .vscode/
+*.env
+
