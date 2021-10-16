@@ -1,4 +1,3 @@
-type RootState = ReturnType<typeof store.getState>;
 type AppDispatch = typeof store.dispatch;
 
 interface Item {
@@ -20,3 +19,5 @@ type Props2 = {
   updateTodo: any;
   completeTodo: any;
 };
+
+type Props3 = Props2 | Props3;

@@ -5,7 +5,8 @@ import {AnimatePresence, motion} from "framer-motion";
 import {addTodos, completeTodos, removeTodos, updateTodos} from "../redux/reducer";
 import TodoItem from "./TodoItem";
 
-const DisplayTodos = (props) => {
+const DisplayTodos = (props: Props3): JSX.Element => {
+  // console.log(props);
   const [sort, setSort] = React.useState("active");
   return (
     <div className="displaytodos">
@@ -23,7 +24,7 @@ const DisplayTodos = (props) => {
       <ul>
         <AnimatePresence>
           {props.todos.length > 0 && sort === "active"
-            ? props.todos.map((item) => {
+            ? props.todos.map((item: Item) => {
                 return (
                   item.completed === false && (
                     <TodoItem
@@ -39,7 +40,7 @@ const DisplayTodos = (props) => {
             : null}
           {/* //- For completed items */}
           {props.todos.length > 0 && sort === "completed"
-            ? props.todos.map((item) => {
+            ? props.todos.map((item: Item) => {
                 return (
                   item.completed === true && (
                     <TodoItem
@@ -55,7 +56,7 @@ const DisplayTodos = (props) => {
             : null}
           {/* //- For all items */}
           {props.todos.length > 0 && sort === "all"
-            ? props.todos.map((item) => {
+            ? props.todos.map((item: Item) => {
                 return (
                   <TodoItem
                     key={item.id}
@@ -73,18 +74,18 @@ const DisplayTodos = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: State) => {
   return {
     todos: state,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    addTodo: (obj) => dispatch(addTodos(obj)),
-    removeTodo: (id) => dispatch(removeTodos(id)),
-    updateTodo: (obj) => dispatch(updateTodos(obj)),
-    completeTodo: (id) => dispatch(completeTodos(id)),
+    addTodo: (obj: Props) => dispatch(addTodos(obj)),
+    removeTodo: (id: Props) => dispatch(removeTodos(id)),
+    updateTodo: (obj: Props) => dispatch(updateTodos(obj)),
+    completeTodo: (id: Props) => dispatch(completeTodos(id)),
   };
 };
 

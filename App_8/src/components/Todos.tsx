@@ -5,6 +5,7 @@ import {GoPlus} from "react-icons/go";
 import {motion} from "framer-motion";
 
 const Todos = (props: Props): JSX.Element => {
+  // console.log(props);
   const [todo, setTodo] = React.useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
