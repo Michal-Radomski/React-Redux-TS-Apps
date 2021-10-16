@@ -4,7 +4,7 @@ import "./App.scss";
 import DisplayTodos from "./components/DisplayTodos";
 import Todos from "./components/Todos";
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
       <motion.h1

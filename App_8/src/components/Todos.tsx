@@ -4,10 +4,10 @@ import {addTodos} from "../redux/reducer";
 import {GoPlus} from "react-icons/go";
 import {motion} from "framer-motion";
 
-const Todos = (props) => {
+const Todos = (props: Props): JSX.Element => {
   const [todo, setTodo] = React.useState("");
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(event.target.value);
   };
 
@@ -37,15 +37,15 @@ const Todos = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: State) => {
   return {
     todos: state,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch: AppDispatch) => {
   return {
-    addTodo: (obj) => dispatch(addTodos(obj)),
+    addTodo: (obj: Props) => dispatch(addTodos(obj)),
   };
 };
 

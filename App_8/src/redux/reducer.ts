@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const initialState = [];
+const initialState: State = [];
 
 const addTodoReducer = createSlice({
   name: "todos",
@@ -10,6 +10,7 @@ const addTodoReducer = createSlice({
     // Adding Todos
     addTodos: (state, action) => {
       state.push(action.payload);
+      // console.log("state:", state, "action.payload:", action.payload);
       return state;
     },
     //Removing Todos
