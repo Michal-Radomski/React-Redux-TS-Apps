@@ -3,25 +3,25 @@ import {connect} from "react-redux";
 
 import {getRates} from "./redux/action";
 class CurrencyConverter2 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstCurrency2: "",
-      secondCurrency2: "",
-      rate2: "",
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     firstCurrency2: "",
+  //     secondCurrency2: "",
+  //     rate2: "",
+  //   };
+  // }
 
   handleSubmit = (event) => {
     // console.log(this.state);
     event.preventDefault();
     this.props.getRates();
 
-    this.setState({
-      firstCurrency2: "",
-      secondCurrency2: "",
-      rate2: "",
-    });
+    // this.setState({
+    //   firstCurrency2: "",
+    //   secondCurrency2: "",
+    //   rate2: "",
+    // });
   };
 
   render() {
@@ -34,14 +34,14 @@ class CurrencyConverter2 extends React.Component {
           <input
             type="text"
             name="firstCurrency"
-            onChange={(event) => this.setState({firstCurrency2: event.target.value.toUpperCase()})}
-            value={this.state.firstCurrency2}
+            onChange={(event) => this.props(event.target.value.toUpperCase())}
+            value={this.props.value}
           />
           <input
             type="text"
             name="secondCurrency"
-            onChange={(event) => this.setState({secondCurrency2: event.target.value.toUpperCase()})}
-            value={this.state.secondCurrency2}
+            onChange={(event) => this.props(event.target.value.toUpperCase())}
+            value={this.props.value}
           />
           <button type="submit" onClick={this.handleSubmit}>
             Convert

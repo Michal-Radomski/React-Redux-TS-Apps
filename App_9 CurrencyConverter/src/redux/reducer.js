@@ -14,7 +14,7 @@ const initialState = {
 };
 
 // Reducer
-const currencyReducer = (state = initialState, action) => {
+const currencyReducer = (state, action) => {
   switch (action.type) {
     case "SET_CURRENCIES":
       return {...state, rate2: action.payload};
