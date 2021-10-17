@@ -12,19 +12,26 @@ class CurrencyConverter2 extends React.Component {
   //   };
   // }
 
+  componentDidUpdate() {
+    this.props.getRates();
+  }
+
   handleSubmit = (event) => {
     // console.log(this.state);
     event.preventDefault();
     this.props.getRates();
 
-    // this.setState({
-    //   firstCurrency2: "",
-    //   secondCurrency2: "",
-    //   rate2: "",
-    // });
+    this.setState({
+      firstCurrency2: "",
+      secondCurrency2: "",
+      rate2: "",
+    });
   };
 
   render() {
+    // if (!this.state) {
+    //   return <div>loading...</div>;
+    // }
     return (
       <React.Fragment>
         <div className="divConvert2">
@@ -54,8 +61,7 @@ class CurrencyConverter2 extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  firstCurrency2: state.firstCurrency2,
-  secondCurrency2: state.secondCurrency2,
+  currencies: state,
 });
 
 export default connect(mapStateToProps, {getRates})(CurrencyConverter2);

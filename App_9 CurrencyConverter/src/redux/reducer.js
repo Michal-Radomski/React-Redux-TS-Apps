@@ -8,13 +8,13 @@ const middleware = [thunk];
 
 // State
 const initialState = {
-  firstCurrency2: "",
-  secondCurrency2: "",
+  firstCurrency2: "EUR",
+  secondCurrency2: "PLN",
   rate2: "",
 };
 
 // Reducer
-const currencyReducer = (state, action) => {
+const currencyReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_CURRENCIES":
       return {...state, rate2: action.payload};

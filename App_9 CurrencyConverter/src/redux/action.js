@@ -1,9 +1,10 @@
 import axios from "axios";
 
+// API key
+const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY2;
+
 // Action type
 export const SET_CURRENCIES = "SET_CURRENCIES";
-// API key
-const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
 
 // Action Creator
 export const getRates = (firstCurrency2, secondCurrency2) => {
@@ -15,8 +16,8 @@ export const getRates = (firstCurrency2, secondCurrency2) => {
       })
         .then((response) => {
           let responseRate = response.data[`${firstCurrency2}_${secondCurrency2}`];
-          response = responseRate.toFixed(3);
-          dispatch({type: "SET_CURRENCIES", payload: response});
+          responseRate = responseRate.toFixed(3);
+          dispatch({type: "SET_CURRENCIES", payload: responseRate});
         })
         .catch((error) => {
           console.log(error);

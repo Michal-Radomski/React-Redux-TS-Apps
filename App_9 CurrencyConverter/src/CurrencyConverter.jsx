@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
+const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY2;
 
 const CurrencyConverter = () => {
   // - Niepotrzebne
