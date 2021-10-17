@@ -1,32 +1,35 @@
 // Redux Store
 
-import {createStore, compose} from "redux";
+import {createStore, applyMiddleware, compose} from "redux";
 import {combineReducers} from "redux";
+import thunk from "redux-thunk";
+
+const middleware = [thunk];
 
 // State
 const initialState = {
-  firstCurrency: "",
-  secondCurrency: "",
-  rate: "",
+  firstCurrency2: "",
+  secondCurrency2: "",
+  rate2: "",
 };
 
 // Reducer
 const currencyReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_CURRENCIES":
-      return action.payload;
+      return {...state, rate2: action.payload};
     default:
       return state;
   }
 };
 
 // CombineReducer
-const reducer = combineReducers({
+const rootReducer = combineReducers({
   currencies: currencyReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, initialState, composeEnhancers());
+const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(...middleware)));
 
 export default store;
