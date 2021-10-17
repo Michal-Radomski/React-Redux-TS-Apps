@@ -1,6 +1,7 @@
 // Redux Store
 
 import {createStore, compose} from "redux";
+import {combineReducers} from "redux";
 
 // State
 const initialState = {
@@ -10,14 +11,19 @@ const initialState = {
 };
 
 // Reducer
-const reducer = (state = initialState, action) => {
-  if (action.type === "SET_CURRENCIES") {
-    return Object.assign({}, state, {
-      posts: state.posts.concat(action.payload),
-    });
+const currencyReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "SET_CURRENCIES":
+      return action.payload;
+    default:
+      return state;
   }
-  return state;
 };
+
+// CombineReducer
+const reducer = combineReducers({
+  currencies: currencyReducer,
+});
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
