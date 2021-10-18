@@ -19,8 +19,8 @@ function App() {
       <CurrencyConverter />
       <br />
       <Provider store={store}>
-        {/* {console.log(store)} */}
-        <CurrencyConverter2 />
+        {/* {console.log("store:", store)} */}
+        <CurrencyConverter2 store={store} />
       </Provider>
     </div>
   );

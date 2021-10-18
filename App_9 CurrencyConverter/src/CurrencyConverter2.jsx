@@ -25,6 +25,7 @@ class CurrencyConverter2 extends React.Component {
   render() {
     return (
       <React.Fragment>
+        {/* {console.log("this.props.store.getState()).currencies.rate2:", this.props.store.getState().currencies.rate2)} */}
         <div className="divConvert2">
           <h3>Simple Currency Converter2</h3>
         </div>
@@ -46,7 +47,7 @@ class CurrencyConverter2 extends React.Component {
           </button>
         </div>
         <div className="divConvert2">
-          1{this.state.firstCurrency2}={this.state.rate2}
+          1{this.state.firstCurrency2}={this.props.store.getState().currencies.rate2}
           {this.state.secondCurrency2}
         </div>
       </React.Fragment>

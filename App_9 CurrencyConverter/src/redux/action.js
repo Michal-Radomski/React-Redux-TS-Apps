@@ -11,7 +11,7 @@ export const SET_CURRENCY2 = "SET_CURRENCY2";
 // Action Creator getRates
 export const getRates = (firstCurrency2, secondCurrency2) => {
   return async function (dispatch, getState) {
-    // dispatch({type: SET_RATE, payload: 1});
+    // dispatch({type: SET_RATE, payload: 0.5});
     await getState(
       axios({
         method: "GET",
