@@ -27,7 +27,7 @@ class CurrencyConverter2 extends React.Component {
       <React.Fragment>
         {/* {console.log("this.props.store.getState()).currencies.rate2:", this.props.store.getState().currencies.rate2)} */}
         <div className="divConvert2">
-          <h3>Simple Currency Converter2</h3>
+          <h3>Simple Currency Converter - Redux Store</h3>
         </div>
         <div className="divConvert2">
           <input

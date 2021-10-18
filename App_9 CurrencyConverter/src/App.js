@@ -17,7 +17,6 @@ function App() {
   return (
     <div>
       <CurrencyConverter />
-      <br />
       <Provider store={store}>
         {/* {console.log("store:", store)} */}
         <CurrencyConverter2 store={store} />

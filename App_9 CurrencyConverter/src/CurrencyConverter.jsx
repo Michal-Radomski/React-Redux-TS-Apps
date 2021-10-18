@@ -47,7 +47,7 @@ const CurrencyConverter = () => {
     <React.Fragment>
       {/* <div className="divConvert">1$USD = {USD_PLN}PLN</div> */}
       <div className="divConvert">
-        <h3>Simple Currency Converter</h3>
+        <h3>Simple Currency Converter - one component</h3>
       </div>
       <div className="divConvert">
         <input type="text" onChange={(event) => setFirstCurrency(event.target.value.toUpperCase())} value={firstCurrency} />
