@@ -3,8 +3,8 @@ body {
 }
 
 @mixin styleDefault {
-  height: 80px;
-  width: 780px;
+  height: 60px;
+  width: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,4 +21,9 @@ body {
 .divConvert2 {
   @include styleDefault;
   background-color: pink;
+}
+
+.divConvert3 {
+  @include styleDefault;
+  background-color: lightgreen;
 }

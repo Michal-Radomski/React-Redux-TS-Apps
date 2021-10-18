@@ -4,9 +4,13 @@ import {createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 
 import "./App.scss";
+
 import CurrencyConverter from "./CurrencyConverter";
+
 import CurrencyConverter2 from "./CurrencyConverter2";
 import rootReducer from "./redux/reducer";
+
+import CurrencyConverter3 from "./ReactHooks/CurrencyConverter3";
 
 // Store
 const middleware = [thunk];
@@ -20,6 +24,7 @@ function App() {
       <Provider store={store}>
         <CurrencyConverter2 />
       </Provider>
+      <CurrencyConverter3 />
     </div>
   );
 }
