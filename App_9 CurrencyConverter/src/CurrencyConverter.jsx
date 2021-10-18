@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY2;
+const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
 
 const CurrencyConverter = () => {
   // - Niepotrzebne
@@ -47,7 +47,6 @@ const CurrencyConverter = () => {
     <React.Fragment>
       {/* <div className="divConvert">1$USD = {USD_PLN}PLN</div> */}
       <div className="divConvert">
-        {" "}
         <h3>Simple Currency Converter</h3>
       </div>
       <div className="divConvert">
