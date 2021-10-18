@@ -6,6 +6,7 @@ import {getRates, setCurrency1, setCurrency2} from "./redux/action";
 class CurrencyConverter2 extends React.Component {
   constructor(props) {
     super(props);
+    // Local State
     this.state = {
       firstCurrency2: "EUR",
       secondCurrency2: "EUR",
@@ -15,7 +16,7 @@ class CurrencyConverter2 extends React.Component {
   }
 
   handleSubmit = (event) => {
-    console.log(this.state);
+    // console.log("this.state:", this.state);
     event.preventDefault();
     this.props.setCurrency1(this.state.firstCurrency2);
     this.props.setCurrency2(this.state.secondCurrency2);
@@ -25,7 +26,7 @@ class CurrencyConverter2 extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {/* {console.log("this.props.store.getState()).currencies.rate2:", this.props.store.getState().currencies.rate2)} */}
+        {/* {console.log("this.props.currencies:", this.props.currencies)} */}
         <div className="divConvert2">
           <h3>Simple Currency Converter - Redux Store</h3>
         </div>
@@ -47,8 +48,8 @@ class CurrencyConverter2 extends React.Component {
           </button>
         </div>
         <div className="divConvert2">
-          1{this.state.firstCurrency2}={this.props.store.getState().currencies.rate2}
-          {this.state.secondCurrency2}
+          1{this.props.currencies.firstCurrency2}={this.props.currencies.rate2}
+          {this.props.currencies.secondCurrency2}
         </div>
       </React.Fragment>
     );
