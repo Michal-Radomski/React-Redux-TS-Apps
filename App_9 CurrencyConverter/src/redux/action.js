@@ -8,7 +8,7 @@ export const SET_RATE = "SET_RATE";
 export const SET_CURRENCY1 = "SET_CURRENCY1";
 export const SET_CURRENCY2 = "SET_CURRENCY2";
 
-// Action Creator getRates
+// Action Creator getRates()
 export const getRates = (firstCurrency2, secondCurrency2) => {
   return async function (dispatch, getState) {
     // - For testing purposes only
@@ -23,6 +23,7 @@ export const getRates = (firstCurrency2, secondCurrency2) => {
           responseRate = responseRate.toFixed(3);
           // console.log(`responseRate: ${responseRate}`, responseRate);
           dispatch({type: SET_RATE, payload: responseRate});
+          // - Need function mapDispatchToProps
           // return {type: SET_RATE, payload: responseRate};
         })
         .catch((error) => {

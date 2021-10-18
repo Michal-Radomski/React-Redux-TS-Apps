@@ -4,7 +4,7 @@ import axios from "axios";
 const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
 
 const CurrencyConverter = () => {
-  // - Niepotrzebne
+  // - Unnecessary
   // const [USD_PLN, setUSD_PLN] = React.useState("");
   // React.useEffect(() => {
   //   axios({

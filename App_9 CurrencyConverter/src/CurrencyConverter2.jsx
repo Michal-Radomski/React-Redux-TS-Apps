@@ -26,7 +26,7 @@ class CurrencyConverter2 extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {/* {console.log("this.props.currencies:", this.props.currencies)} */}
+        {/* {console.log("this.props.currencies.currencies:", this.props.currencies.currencies)} */}
         <div className="divConvert2">
           <h3>Simple Currency Converter - Redux Store</h3>
         </div>
@@ -48,8 +48,8 @@ class CurrencyConverter2 extends React.Component {
           </button>
         </div>
         <div className="divConvert2">
-          1{this.props.currencies.firstCurrency2}={this.props.currencies.rate2}
-          {this.props.currencies.secondCurrency2}
+          1{this.props.currencies.currencies.firstCurrency2}={this.props.currencies.currencies.rate2}
+          {this.props.currencies.currencies.secondCurrency2}
         </div>
       </React.Fragment>
     );
