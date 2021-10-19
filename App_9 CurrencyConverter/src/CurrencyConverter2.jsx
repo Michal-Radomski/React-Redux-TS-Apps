@@ -8,8 +8,8 @@ class CurrencyConverter2 extends React.Component {
     super(props);
     // Local State
     this.state = {
-      firstCurrency2: "EUR",
-      secondCurrency2: "EUR",
+      firstCurrency2: "USD",
+      secondCurrency2: "USD",
       rate2: "1",
     };
     // console.log("props:", props);
@@ -33,13 +33,11 @@ class CurrencyConverter2 extends React.Component {
         <div className="divConvert2">
           <input
             type="text"
-            name="firstCurrency"
             onChange={(event) => this.setState({firstCurrency2: event.target.value.toUpperCase()})}
             value={this.state.firstCurrency2}
           />
           <input
             type="text"
-            name="secondCurrency"
             onChange={(event) => this.setState({secondCurrency2: event.target.value.toUpperCase()})}
             value={this.state.secondCurrency2}
           />

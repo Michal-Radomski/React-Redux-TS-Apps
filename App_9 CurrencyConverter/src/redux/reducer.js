@@ -4,8 +4,8 @@ import {SET_RATE, SET_CURRENCY1, SET_CURRENCY2} from "./action";
 
 // Initial Global State
 const initialState = {
-  firstCurrency2: "EUR",
-  secondCurrency2: "EUR",
+  firstCurrency2: "USD",
+  secondCurrency2: "USD",
   rate2: "1",
 };
 

@@ -1,22 +1,22 @@
 import React from "react";
 
 import {Store} from "./Store";
-import {getRates, setCurrency1, setCurrency2} from "./action";
-import {SET_RATE, SET_CURRENCY1, SET_CURRENCY2} from "./action";
+import {get_Rates, setCurrency_1, setCurrency_2} from "./action";
+
 const CurrencyConverter3 = () => {
   const [firstCurrency2, setFirstCurrency1] = React.useState("EUR");
   const [secondCurrency2, setSecondCurrency] = React.useState("EUR");
   const [rate, setRate] = React.useState("1");
 
-  const {state, dispatch} = React.useContext(Store);
+  const Context = React.useContext(Store);
 
-  console.log(state, dispatch);
+  console.log(Context);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setCurrency1(firstCurrency2);
-    setCurrency2(secondCurrency2);
-    getRates(rate);
+    setCurrency_1(firstCurrency2);
+    setCurrency_2(secondCurrency2);
+    // get_Rates(rate);
   };
   console.log();
   return (
@@ -27,14 +27,14 @@ const CurrencyConverter3 = () => {
       <div className="divConvert3">
         <input
           type="text"
-          // onChange={(event) => setFirstCurrency1(event.target.value.toUpperCase())}
-          onChange={() => dispatch({type: SET_CURRENCY1, payload: firstCurrency2})}
-          value={firstCurrency2}
+          id="curren"
+          onChange={(event) => setFirstCurrency1(event.target.value.toUpperCase())}
+          value={Context.state.first_Currency}
         />
         <input
           type="text"
           onChange={(event) => setSecondCurrency(event.target.value.toUpperCase())}
-          value={state.secondCurrency2}
+          value={Context.state.second_Currency}
         />
         <button
           type="button"
