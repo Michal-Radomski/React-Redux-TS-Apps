@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 
 import {getRates, setCurrency1, setCurrency2} from "./redux/action";
 
-class CurrencyConverter2 extends React.Component {
-  constructor(props) {
+class CurrencyConverter2 extends React.Component<Props, State | RootState> {
+  constructor(props: Props) {
     super(props);
     // Local State
     this.state = {
@@ -15,7 +15,7 @@ class CurrencyConverter2 extends React.Component {
     // console.log("props:", props);
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = (event: React.SyntheticEvent) => {
     // console.log("this.state:", this.state);
     event.preventDefault();
     this.props.setCurrency1(this.state.firstCurrency2);

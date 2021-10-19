@@ -3,14 +3,14 @@ import React from "react";
 import {Store} from "./Store";
 import {get_Rates, SET_CURRENCY_1, SET_CURRENCY_2} from "./action";
 
-const CurrencyConverter3 = () => {
+const CurrencyConverter3 = (): JSX.Element => {
   const {state, dispatch} = React.useContext(Store);
   // console.log("useContext:", state, dispatch);
 
   const [firstCurrency, setFirstCurrency] = React.useState(state.first_Currency);
   const [secondCurrency, setSecondCurrency] = React.useState(state.second_Currency);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.SyntheticEvent) => {
     // console.log("firstCurrency, secondCurrency:", firstCurrency, secondCurrency);
     event.preventDefault();
     dispatch({type: SET_CURRENCY_1, payload: firstCurrency});

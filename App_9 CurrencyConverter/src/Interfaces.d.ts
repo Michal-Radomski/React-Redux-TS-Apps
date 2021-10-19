@@ -2,13 +2,9 @@
 
 type ProcessEnv = string | any;
 
-// interface CustomWindow extends Window {
-//   store?: any;
-// }
-
 type Dispatch = typeof store.dispatch;
 type Fetch = typeof store.fetch;
-// type RootState = ReturnType<typeof store.getState>
+type RootState = ReturnType<typeof store.getState>;
 
 interface State_1 {
   firstCurrency2: string;
@@ -27,3 +23,12 @@ type Action = {
   type: string;
   payload: string | number;
 };
+
+type Function = (arg0: string) => string;
+interface Props {
+  Currencies?: State;
+  currencies: Currencies;
+  getRates: Fetch;
+  setCurrency1: Function;
+  setCurrency2: Function;
+}
