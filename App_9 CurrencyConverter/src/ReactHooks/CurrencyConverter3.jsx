@@ -1,55 +1,53 @@
-import React, {createContext, useContext, useReducer} from "react";
-import axios from "axios";
+import React from "react";
 
-const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
-
+import {Store} from "./Store";
+import {getRates, setCurrency1, setCurrency2} from "./action";
+import {SET_RATE, SET_CURRENCY1, SET_CURRENCY2} from "./action";
 const CurrencyConverter3 = () => {
-  const [firstCurrency, setFirstCurrency] = React.useState("EUR");
-  const [secondCurrency, setSecondCurrency] = React.useState("EUR");
+  const [firstCurrency2, setFirstCurrency1] = React.useState("EUR");
+  const [secondCurrency2, setSecondCurrency] = React.useState("EUR");
   const [rate, setRate] = React.useState("1");
 
-  const getRate = (firstCurrency, secondCurrency) => {
-    axios({
-      method: "GET",
-      url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency}_${secondCurrency}&compact=ultra`,
-    })
-      .then((response) => {
-        let responseRate = response.data[`${firstCurrency}_${secondCurrency}`];
-        responseRate = responseRate.toFixed(3);
-        // console.log(responseRate, typeof responseRate);
-        setRate(responseRate);
-        // console.log(response.data[`${firstCurrency}_${secondCurrency}`]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const {state, dispatch} = React.useContext(Store);
 
+  console.log(state, dispatch);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setCurrency1(firstCurrency2);
+    setCurrency2(secondCurrency2);
+    getRates(rate);
+  };
+  console.log();
   return (
     <React.Fragment>
-      {/* <div className="divConvert">1$USD = {USD_PLN}PLN</div> */}
       <div className="divConvert3">
         <h3>Simple Currency Converter - useReducer/useContext</h3>
       </div>
       <div className="divConvert3">
-        <input type="text" onChange={(event) => setFirstCurrency(event.target.value.toUpperCase())} value={firstCurrency} />
+        <input
+          type="text"
+          // onChange={(event) => setFirstCurrency1(event.target.value.toUpperCase())}
+          onChange={() => dispatch({type: SET_CURRENCY1, payload: firstCurrency2})}
+          value={firstCurrency2}
+        />
         <input
           type="text"
           onChange={(event) => setSecondCurrency(event.target.value.toUpperCase())}
-          value={secondCurrency}
+          value={state.secondCurrency2}
         />
         <button
           type="button"
           onClick={() => {
-            getRate(firstCurrency, secondCurrency);
+            handleSubmit();
           }}
         >
           Convert
         </button>
       </div>
       <div className="divConvert3">
-        1{firstCurrency}={rate}
-        {secondCurrency}
+        {/* 1{firstCurrency}={rate}
+        {secondCurrency} */}
       </div>
     </React.Fragment>
   );
