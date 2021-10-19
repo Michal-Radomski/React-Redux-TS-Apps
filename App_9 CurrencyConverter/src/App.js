@@ -7,13 +7,15 @@ import "./App.scss";
 
 import CurrencyConverter from "./CurrencyConverter";
 
+// Redux-Store -> import
 import CurrencyConverter2 from "./CurrencyConverter2";
 import rootReducer from "./redux/reducer";
 
+// React Hook Store
 import CurrencyConverter3 from "./ReactHooks/CurrencyConverter3";
 import {StoreProvider} from "./ReactHooks/Store";
 
-// Redux-Store
+// Redux-Store - setting
 const middleware = [thunk];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));

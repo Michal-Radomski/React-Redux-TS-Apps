@@ -10,7 +10,11 @@ export const SET_CURRENCY_2 = "SET_CURRENCY_2";
 
 // Action Creator getRates()
 export const get_Rates = (first_Currency, second_Currency) => {
-  return async function (getState) {
+  return async function (getState, dispatch) {
+    console.log("test");
+    // - For testing purposes only
+    // dispatch({type: SETexRATE, payload: 0.5});
+
     await getState(
       axios({
         method: "GET",
@@ -19,7 +23,8 @@ export const get_Rates = (first_Currency, second_Currency) => {
         .then((response) => {
           let responseRate = response.data[`${first_Currency}_${second_Currency}`];
           responseRate = responseRate.toFixed(3);
-          return {type: SETexRATE, payload: responseRate};
+          // return {type: SETexRATE, payload: responseRate};
+          dispatch({type: SETexRATE, payload: responseRate});
         })
         .catch((error) => {
           console.log(error);

@@ -2,24 +2,24 @@ import React from "react";
 
 import {Store} from "./Store";
 import {get_Rates, setCurrency_1, setCurrency_2} from "./action";
+import {SETexRATE, SET_CURRENCY_1, SET_CURRENCY_2} from "./action";
 
 const CurrencyConverter3 = () => {
-  const Context = React.useContext(Store);
+  const {state, dispatch} = React.useContext(Store);
   const [firstCurrency, setFirstCurrency] = React.useState("EUR");
   const [secondCurrency, setSecondCurrency] = React.useState("EUR");
-  const [rate] = React.useState("1");
+  const [rate] = React.useState(1);
 
-  console.log(Context);
+  console.log(state, dispatch);
 
   const handleSubmit = (event) => {
-    console.log(firstCurrency, secondCurrency);
+    console.log(firstCurrency, secondCurrency, rate);
     event.preventDefault();
-    setCurrency_1(firstCurrency);
-    setCurrency_2(secondCurrency);
-    get_Rates(rate);
+    dispatch({type: SET_CURRENCY_1, payload: firstCurrency});
+    dispatch({type: SET_CURRENCY_2, payload: secondCurrency});
+    get_Rates(firstCurrency, secondCurrency);
   };
 
-  console.log(firstCurrency, secondCurrency, rate);
   return (
     <React.Fragment>
       <div className="divConvert3">
