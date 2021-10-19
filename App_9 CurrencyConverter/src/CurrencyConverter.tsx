@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
 
-const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
+const API_KEY: ProcessEnv = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
 
-const CurrencyConverter = () => {
+const CurrencyConverter = (): JSX.Element => {
   // - Unnecessary
   // const [USD_PLN, setUSD_PLN] = React.useState("");
   // React.useEffect(() => {
@@ -26,12 +26,12 @@ const CurrencyConverter = () => {
   const [secondCurrency, setSecondCurrency] = React.useState("EUR");
   const [rate, setRate] = React.useState(1);
 
-  const getRate = (firstCurrency, secondCurrency) => {
+  const getRate = (firstCurrency: string, secondCurrency: string) => {
     axios({
       method: "GET",
       url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency}_${secondCurrency}&compact=ultra`,
     })
-      .then((response) => {
+      .then((response: Fetch) => {
         let responseRate = response.data[`${firstCurrency}_${secondCurrency}`];
         responseRate = responseRate.toFixed(3);
         // console.log(responseRate, typeof responseRate);

@@ -54,7 +54,7 @@ class CurrencyConverter2 extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   currencies: state,
 });
 

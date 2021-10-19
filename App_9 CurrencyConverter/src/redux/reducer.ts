@@ -3,14 +3,14 @@ import {combineReducers} from "redux";
 import {SET_RATE, SET_CURRENCY1, SET_CURRENCY2} from "./action";
 
 // Initial Global State
-const initialState = {
+const initialState: State = {
   firstCurrency2: "USD",
   secondCurrency2: "USD",
   rate2: 1,
 };
 
 // Reducer (Reducer/currencyReducer.js)
-const currencyReducer = (state = initialState, action) => {
+const currencyReducer = (state = initialState, action: Action) => {
   // console.log(`Action Received: ${action}`, action, state);
   switch (action.type) {
     case SET_RATE:
