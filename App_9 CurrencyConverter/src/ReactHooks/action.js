@@ -10,9 +10,7 @@ export const SET_CURRENCY_2 = "SET_CURRENCY_2";
 
 // Action Creator getRates()
 export const get_Rates = (first_Currency, second_Currency) => {
-  return async function (dispatch, getState) {
-    // - For testing purposes only
-    // dispatch({type: SET_RATE, payload: 0.5});
+  return async function (getState) {
     await getState(
       axios({
         method: "GET",
@@ -21,8 +19,7 @@ export const get_Rates = (first_Currency, second_Currency) => {
         .then((response) => {
           let responseRate = response.data[`${first_Currency}_${second_Currency}`];
           responseRate = responseRate.toFixed(3);
-          // console.log(`responseRate: ${responseRate}`, responseRate);
-          dispatch({type: SETexRATE, payload: responseRate});
+          return {type: SETexRATE, payload: responseRate};
         })
         .catch((error) => {
           console.log(error);
@@ -32,9 +29,9 @@ export const get_Rates = (first_Currency, second_Currency) => {
 };
 
 // Other Action Creators
-export const setCurrency_1 = (first_Currency) => (dispatch) => {
-  dispatch({type: SET_CURRENCY_1, payload: first_Currency});
+export const setCurrency_1 = (first_Currency) => {
+  return {type: SET_CURRENCY_1, payload: first_Currency};
 };
-export const setCurrency_2 = (second_Currency) => (dispatch) => {
-  dispatch({type: SET_CURRENCY_2, payload: second_Currency});
+export const setCurrency_2 = (second_Currency) => {
+  return {type: SET_CURRENCY_2, payload: second_Currency};
 };
