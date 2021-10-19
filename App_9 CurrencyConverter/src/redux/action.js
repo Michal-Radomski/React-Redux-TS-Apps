@@ -3,7 +3,7 @@ import axios from "axios";
 // API key
 const API_KEY = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
 
-// Action type
+// Action types
 export const SET_RATE = "SET_RATE";
 export const SET_CURRENCY1 = "SET_CURRENCY1";
 export const SET_CURRENCY2 = "SET_CURRENCY2";

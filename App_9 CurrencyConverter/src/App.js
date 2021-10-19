@@ -11,11 +11,11 @@ import CurrencyConverter from "./CurrencyConverter";
 import CurrencyConverter2 from "./CurrencyConverter2";
 import rootReducer from "./redux/reducer";
 
-// React Hook Store
+// React Hook -> Store
 import CurrencyConverter3 from "./ReactHooks/CurrencyConverter3";
 import {StoreProvider} from "./ReactHooks/Store";
 
-// Redux-Store - setting
+// Redux-Store + Redux DevTools -> Setting Up
 const middleware = [thunk];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));

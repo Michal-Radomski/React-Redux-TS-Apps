@@ -1,19 +1,17 @@
 import React from "react";
 
 import {Store} from "./Store";
-import {get_Rates, setCurrency_1, setCurrency_2} from "./action";
-import {SETexRATE, SET_CURRENCY_1, SET_CURRENCY_2} from "./action";
+import {get_Rates, SET_CURRENCY_1, SET_CURRENCY_2} from "./action";
 
 const CurrencyConverter3 = () => {
   const {state, dispatch} = React.useContext(Store);
-  const [firstCurrency, setFirstCurrency] = React.useState("EUR");
-  const [secondCurrency, setSecondCurrency] = React.useState("EUR");
-  const [rate] = React.useState(1);
+  // console.log("useContext:", state, dispatch);
 
-  console.log(state, dispatch);
+  const [firstCurrency, setFirstCurrency] = React.useState(state.first_Currency);
+  const [secondCurrency, setSecondCurrency] = React.useState(state.second_Currency);
 
   const handleSubmit = (event) => {
-    console.log(firstCurrency, secondCurrency, rate);
+    // console.log("firstCurrency, secondCurrency:", firstCurrency, secondCurrency);
     event.preventDefault();
     dispatch({type: SET_CURRENCY_1, payload: firstCurrency});
     dispatch({type: SET_CURRENCY_2, payload: secondCurrency});
@@ -32,13 +30,13 @@ const CurrencyConverter3 = () => {
           onChange={(event) => setSecondCurrency(event.target.value.toUpperCase())}
           value={secondCurrency}
         />
-        <button type="submit" onClick={handleSubmit}>
+        <button type="button" onClick={handleSubmit}>
           Convert
         </button>
       </div>
       <div className="divConvert3">
-        {/* 1{firstCurrency}={rate}
-        {secondCurrency} */}
+        1{state.first_Currency}={state.rateExchange}
+        {state.second_Currency}
       </div>
     </React.Fragment>
   );
