@@ -36,5 +36,9 @@ Applications written in **TS using React and Redux**:
    [The Free Currency Converter API](https://free.currencyconverterapi.com/).
 
    Migration from React App to Redux-React App is written according to this
-   [tutorial](https://medium.com/@bin.w.liu/step-by-step-migrating-react-app-to-redux-react-app-90974fce2877). Migration
-   JS->TS like above.
+   [tutorial](https://medium.com/@bin.w.liu/step-by-step-migrating-react-app-to-redux-react-app-90974fce2877).
+
+   Migration from Redux-React App to React useContext/useReducer Hooks is written according to this
+   [tutorial](https://www.freecodecamp.org/news/how-to-convert-from-react-redux-classes-to-react-hooks-the-easy-way-eca2233e0e7a/).
+
+   Migration JS->TS like above.
