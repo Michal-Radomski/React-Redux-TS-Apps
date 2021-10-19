@@ -4,7 +4,7 @@ import {SETexRATE, SET_CURRENCY_1, SET_CURRENCY_2} from "./action";
 export const initial_State = {
   first_Currency: "CHF",
   second_Currency: "CHF",
-  rateExchange: "1",
+  rateExchange: 1,
 };
 
 // Reducer (Reducer/currencyReducer.js)

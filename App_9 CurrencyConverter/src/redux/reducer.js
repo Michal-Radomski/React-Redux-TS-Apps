@@ -6,7 +6,7 @@ import {SET_RATE, SET_CURRENCY1, SET_CURRENCY2} from "./action";
 const initialState = {
   firstCurrency2: "USD",
   secondCurrency2: "USD",
-  rate2: "1",
+  rate2: 1,
 };
 
 // Reducer (Reducer/currencyReducer.js)

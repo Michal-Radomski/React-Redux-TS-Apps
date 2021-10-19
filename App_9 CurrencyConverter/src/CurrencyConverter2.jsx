@@ -10,7 +10,7 @@ class CurrencyConverter2 extends React.Component {
     this.state = {
       firstCurrency2: "USD",
       secondCurrency2: "USD",
-      rate2: "1",
+      rate2: 1,
     };
     // console.log("props:", props);
   }

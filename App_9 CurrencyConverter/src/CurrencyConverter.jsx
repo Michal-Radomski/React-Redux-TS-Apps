@@ -24,7 +24,7 @@ const CurrencyConverter = () => {
 
   const [firstCurrency, setFirstCurrency] = React.useState("EUR");
   const [secondCurrency, setSecondCurrency] = React.useState("EUR");
-  const [rate, setRate] = React.useState("1");
+  const [rate, setRate] = React.useState(1);
 
   const getRate = (firstCurrency, secondCurrency) => {
     axios({
