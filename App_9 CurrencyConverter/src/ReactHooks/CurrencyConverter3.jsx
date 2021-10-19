@@ -17,7 +17,7 @@ const CurrencyConverter3 = () => {
     event.preventDefault();
     dispatch({type: SET_CURRENCY_1, payload: firstCurrency});
     dispatch({type: SET_CURRENCY_2, payload: secondCurrency});
-    get_Rates(firstCurrency, secondCurrency);
+    get_Rates(firstCurrency, secondCurrency, dispatch);
   };
 
   return (

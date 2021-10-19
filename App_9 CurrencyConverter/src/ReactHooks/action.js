@@ -9,28 +9,24 @@ export const SET_CURRENCY_1 = "SET_CURRENCY_1";
 export const SET_CURRENCY_2 = "SET_CURRENCY_2";
 
 // Action Creator getRates()
-export const get_Rates = (first_Currency, second_Currency) => {
-  return async function (getState, dispatch) {
-    console.log("test");
-    // - For testing purposes only
-    // dispatch({type: SETexRATE, payload: 0.5});
 
-    await getState(
-      axios({
-        method: "GET",
-        url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${first_Currency}_${second_Currency}&compact=ultra`,
-      })
-        .then((response) => {
-          let responseRate = response.data[`${first_Currency}_${second_Currency}`];
-          responseRate = responseRate.toFixed(3);
-          // return {type: SETexRATE, payload: responseRate};
-          dispatch({type: SETexRATE, payload: responseRate});
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-    );
-  };
+export const get_Rates = (first_Currency, second_Currency, dispatch) => {
+  console.log("test");
+  // - For testing purposes only
+  dispatch({type: SETexRATE, payload: 0.5});
+  axios({
+    method: "GET",
+    url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${first_Currency}_${second_Currency}&compact=ultra`,
+  })
+    .then((response) => {
+      let responseRate = response.data[`${first_Currency}_${second_Currency}`];
+      responseRate = responseRate.toFixed(3);
+      // return {type: SETexRATE, payload: responseRate};
+      dispatch({type: SETexRATE, payload: responseRate});
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 // Other Action Creators
