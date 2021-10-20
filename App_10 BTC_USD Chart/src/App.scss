@@ -2,12 +2,14 @@
   background-color: whitesmoke;
 }
 
-.chart-wrapper canvas {
+.chart-wrapper {
+  margin-top: 150px;
   margin: auto;
   max-width: 1250px;
-}
-.chart-wrapper {
-  margin-top: 50px;
+  canvas {
+    width: 90%;
+    height: auto;
+  }
 }
 
 .btns-wrapper {

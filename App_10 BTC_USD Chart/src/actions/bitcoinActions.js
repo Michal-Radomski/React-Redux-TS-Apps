@@ -14,7 +14,7 @@ export const getData =
       const response = await axios.get(
         `https://financialmodelingprep.com/api/v3/historical-chart/${time}/BTCUSD?apikey=${API_KEY}`
       );
-      console.log(response.data);
+      // console.log("response.data:", response.data);
       const labels = [];
       const data = [];
       for (let i = 0; i < response.data.length; i++) {
