@@ -33,16 +33,18 @@ Applications written in **TS using React and Redux**:
 
 9. App_09 (React+Redux+TS) -> React App is written according to this [tutorial](https://www.youtube.com/watch?v=iDs5Woed47c).
    The API key is not hosted on [github.com](https://github.com/). Conversion rates are taken from
-   [The Free Currency Converter API](https://free.currencyconverterapi.com/).
-
-   Migration from React App to Redux-React App is written according to this
-   [tutorial](https://medium.com/@bin.w.liu/step-by-step-migrating-react-app-to-redux-react-app-90974fce2877).
-
-   Migration from Redux-React App to React useContext/useReducer Hooks is written according to this
+   [The Free Currency Converter API](https://free.currencyconverterapi.com/). Migration from React App to Redux-React App is
+   written according to this
+   [tutorial](https://medium.com/@bin.w.liu/step-by-step-migrating-react-app-to-redux-react-app-90974fce2877). Migration from
+   Redux-React App to React useContext/useReducer Hooks is written according to this
    [tutorial](https://www.freecodecamp.org/news/how-to-convert-from-react-redux-classes-to-react-hooks-the-easy-way-eca2233e0e7a/).
-
    Migration JS->TS like above.
 
 10. App_10 (React+Redux+TS) is written according to this [tutorial](https://www.youtube.com/watch?v=UsL46JwBZwk), migration
     JS->TS like above. The API key is not hosted on [github.com](https://github.com/). The data is retrieved from
     [Financial Modeling Prep API](https://financialmodelingprep.com/developer).
+
+11. App_11 (React+Redux+TS) is written according to this
+    [tutorial](https://paolo-delia99.medium.com/using-react-and-plotly-js-to-display-stock-chart-2b9e8bdc71c7), migration
+    JS->TS like above. The API key is not hosted on [github.com](https://github.com/). The data is retrieved from
+    [Alpha Vantage](https://www.alphavantage.co/support/#api-key).
