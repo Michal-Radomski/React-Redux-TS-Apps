@@ -4,14 +4,14 @@ import moment from "moment";
 const API_KEY: ProcessEnv = process.env.REACT_APP_Financial_Modeling_Prep_API_KEY;
 
 export const getData =
-  ({time, number}) =>
-  async (dispatch) => {
+  ({time, number}: {time: string; number: number}) =>
+  async (dispatch: Dispatch) => {
     try {
       dispatch({
         type: "AWAITING_BITCOIN",
       });
 
-      const response = await axios.get(
+      const response: Fetch = await axios.get(
         `https://financialmodelingprep.com/api/v3/historical-chart/${time}/BTCUSD?apikey=${API_KEY}`
       );
       // console.log("response.data:", response.data);

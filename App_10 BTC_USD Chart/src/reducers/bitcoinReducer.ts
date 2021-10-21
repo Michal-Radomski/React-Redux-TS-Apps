@@ -1,4 +1,4 @@
-const initialState = {
+const initialState: State = {
   loading: false,
   data: {
     labels: [],
@@ -14,7 +14,7 @@ const initialState = {
   },
 };
 
-const bitcoinReducer = (state = initialState, action) => {
+const bitcoinReducer = (state = initialState, action: Action) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const {type, payload} = action;
   // console.log("type:", type);

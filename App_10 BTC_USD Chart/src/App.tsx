@@ -4,9 +4,9 @@ import {Line} from "react-chartjs-2";
 import {useDispatch, useSelector} from "react-redux";
 import {getData} from "./actions/bitcoinActions";
 
-function App() {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state.bitcoin);
+function App(): JSX.Element {
+  const dispatch: Dispatch = useDispatch();
+  const state: State = useSelector((state: State) => state.bitcoin);
   const [num, setNum] = React.useState(150);
 
   // -Unnecessary
@@ -23,7 +23,7 @@ function App() {
   //   ],
   // };
 
-  const fetchData = (time) => {
+  const fetchData = (time: string) => {
     //Fetching data from Redux using time
     dispatch(
       getData({
@@ -39,7 +39,7 @@ function App() {
         <button onClick={() => fetchData("1min")}>1 Min</button>
         <button onClick={() => fetchData("5min")}>5 Min</button>
         <button onClick={() => fetchData("15min")}>15 Min</button>
-        <input onChange={(event) => setNum(event.target.value)} />
+        <input type="number" onChange={(event: React.FormEvent<HTMLInputElement> | any) => setNum(event.target.value)} />
         {state.loading && <p>Loading...</p>}
         {state.errors && <p>Loading...</p>}
       </div>
