@@ -1,0 +1,1 @@
+type ProcessEnv = string | any;
