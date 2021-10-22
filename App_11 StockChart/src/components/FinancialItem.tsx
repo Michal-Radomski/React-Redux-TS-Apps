@@ -13,11 +13,17 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import getFinancialItem from "../actions/financialItem";
 
-const FinancialItem = ({financialItem: {financialItem}, getFinancialItem}) => {
+const FinancialItem = (props: RootState): JSX.Element => {
+  const {
+    financialItem: {financialItem},
+    getFinancialItem,
+  } = props;
+
   // console.log("{financialItem: {financialItem}, getFinancialItem}", {financialItem: {financialItem}, getFinancialItem});
   // console.log("financialItem:", financialItem);
+
   const classes = financialItemStyle();
-  const [typeOfChart, setTypeOfChart] = React.useState("line");
+  const [typeOfChart, setTypeOfChart] = React.useState<string>("line");
   const firstUpdate = React.useRef(true);
 
   React.useLayoutEffect(() => {
@@ -29,7 +35,7 @@ const FinancialItem = ({financialItem: {financialItem}, getFinancialItem}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleChartChange = (event) => {
+  const handleChartChange = (event: React.ChangeEvent<HTMLSelectElement> | any) => {
     setTypeOfChart(event.target.value);
   };
 
@@ -78,7 +84,7 @@ FinancialItem.propTypes = {
   getFinancialItem: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   financialItem: state.financialItem,
 });
 

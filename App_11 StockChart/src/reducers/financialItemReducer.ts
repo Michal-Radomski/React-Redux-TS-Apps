@@ -4,7 +4,7 @@ const initialState = {
   financialItem: null,
 };
 
-export default function financialItemReducer(state = initialState, action) {
+export default function financialItemReducer(state = initialState, action: Action) {
   if (action.type === GET_FINANCIAL_ITEM) {
     return {
       ...state,

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Plot from "react-plotly.js";
 
-const LineChart = (props) => {
+const LineChart: LineChart = (props): JSX.Element => {
   // console.log("LineChart props:", props);
   return (
     <React.Fragment>
@@ -17,7 +17,7 @@ const LineChart = (props) => {
           },
         ]}
         layout={{width: 720, height: 440, title: props.financialItemName}}
-        options={{displaylogo: "false"}}
+        // options={{displaylogo: "false"}}
       />
     </React.Fragment>
   );

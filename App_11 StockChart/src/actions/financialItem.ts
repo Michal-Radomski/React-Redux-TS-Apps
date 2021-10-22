@@ -1,15 +1,15 @@
 import {GET_FINANCIAL_ITEM} from "./types";
 
-const getFinancialItem = (symbol) => async (dispatch) => {
-  const API_KEY = process.env.REACT_APP_AV_API_KEY;
+const getFinancialItem = (symbol: string) => async (dispatch: Dispatch) => {
+  const API_KEY: ProcessEnv = process.env.REACT_APP_AV_API_KEY;
   // console.log("API_KEY:", API_KEY);
 
   let finItemSymbol = symbol;
-  let financialChartXValuesFunction = [];
-  let financialChartCloseValuesFunction = [];
-  let financialChartOpenValuesFunction = [];
-  let financialChartHighValuesFunction = [];
-  let financialChartLowValuesFunction = [];
+  let financialChartXValuesFunction: string[] = [];
+  let financialChartCloseValuesFunction: number[] = [];
+  let financialChartOpenValuesFunction: number[] = [];
+  let financialChartHighValuesFunction: number[] = [];
+  let financialChartLowValuesFunction: number[] = [];
 
   // console.log("finItemSymbol:", finItemSymbol);
 

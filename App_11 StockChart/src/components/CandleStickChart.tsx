@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Plot from "react-plotly.js";
 
-const CandleStickChart = ({financialItem, financialItemName}) => {
+const CandleStickChart: CandleStickChart = ({financialItem, financialItemName}): JSX.Element => {
   // console.log("financialItem:", financialItem);
   // console.log("financialItemName:", financialItemName);
   return (
@@ -36,7 +36,7 @@ const CandleStickChart = ({financialItem, financialItemName}) => {
             autorange: true,
           },
         }}
-        options={{displaylogo: "false"}}
+        // options={{displaylogo: "false"}}
       />
     </React.Fragment>
   );

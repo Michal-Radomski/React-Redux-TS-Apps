@@ -1,6 +1,6 @@
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles, Theme} from "@material-ui/core/styles";
 
-const financialItemStyle = makeStyles((theme) => ({
+const financialItemStyle = makeStyles((theme: Theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,

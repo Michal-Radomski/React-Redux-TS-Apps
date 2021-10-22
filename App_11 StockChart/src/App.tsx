@@ -1,4 +1,3 @@
-import React from "react";
 import FinancialItem from "./components/FinancialItem";
 import "./App.scss";
 import {Provider} from "react-redux";
