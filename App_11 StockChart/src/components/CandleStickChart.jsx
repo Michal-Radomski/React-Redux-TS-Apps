@@ -4,6 +4,7 @@ import Plot from "react-plotly.js";
 
 const CandleStickChart = ({financialItem, financialItemName}) => {
   // console.log("financialItem:", financialItem);
+  // console.log("financialItemName:", financialItemName);
   return (
     <React.Fragment>
       <Plot
@@ -41,9 +42,9 @@ const CandleStickChart = ({financialItem, financialItemName}) => {
   );
 };
 
-// CandleStickChart.propTypes = {
-//   financialItem: PropTypes.object.isRequired,
-//   financialItemName: PropTypes.string.isRequired,
-// };
+CandleStickChart.propTypes = {
+  financialItem: PropTypes.object.isRequired,
+  financialItemName: PropTypes.string.isRequired,
+};
 
 export default CandleStickChart;

@@ -13,8 +13,9 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import getFinancialItem from "../actions/financialItem";
 
-const FinancialItem = (props) => {
-  // console.log("props:", props);
+const FinancialItem = ({financialItem: {financialItem}, getFinancialItem}) => {
+  // console.log("{financialItem: {financialItem}, getFinancialItem}", {financialItem: {financialItem}, getFinancialItem});
+  // console.log("financialItem:", financialItem);
   const classes = financialItemStyle();
   const [typeOfChart, setTypeOfChart] = React.useState("line");
   const firstUpdate = React.useRef(true);
@@ -25,6 +26,7 @@ const FinancialItem = (props) => {
       getFinancialItem("TSLA");
       return;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChartChange = (event) => {
@@ -32,26 +34,21 @@ const FinancialItem = (props) => {
   };
 
   const displayTheRightPlot = () => {
-    // console.log(props.financialItem);
     switch (typeOfChart) {
       case "line":
-        return (
-          <LineChart color="green" financialItem={props.financialItem} financialItemName={props.financialItem.symbol} />
-        );
+        return <LineChart color="green" financialItem={financialItem} financialItemName={financialItem.symbol} />;
       case "candlestick":
-        return <CandleStickChart financialItem={props.financialItem} financialItemName={props.financialItem.symbol} />;
+        return <CandleStickChart financialItem={financialItem} financialItemName={financialItem.symbol} />;
       default:
-        return (
-          <LineChart color="green" financialItem={props.financialItem} financialItemName={props.financialItem.symbol} />
-        );
+        return <LineChart color="green" financialItem={financialItem} financialItemName={financialItem.symbol} />;
     }
   };
 
   return (
     <div className="financial-item-big-wrapper">
-      <div>{props.financialItem ? displayTheRightPlot() : null}</div>
+      <div>{financialItem ? displayTheRightPlot() : null}</div>
       <div>
-        {props.financialItem ? (
+        {financialItem ? (
           <FormControl className={classes.formControl} id="stock-type-of-chart-form-control">
             <InputLabel shrink id="type-of-chart-select-label">
               Type of Chart
@@ -76,10 +73,10 @@ const FinancialItem = (props) => {
   );
 };
 
-// FinancialItem.propTypes = {
-//   financialItem: PropTypes.object.isRequired,
-//   getFinancialItem: PropTypes.func.isRequired,
-// };
+FinancialItem.propTypes = {
+  financialItem: PropTypes.object.isRequired,
+  getFinancialItem: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   financialItem: state.financialItem,

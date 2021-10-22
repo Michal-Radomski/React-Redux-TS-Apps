@@ -2,8 +2,7 @@ import {GET_FINANCIAL_ITEM} from "./types";
 
 const getFinancialItem = (symbol) => async (dispatch) => {
   const API_KEY = process.env.REACT_APP_AV_API_KEY;
-  // const API_KEY = "9SEJV46K465GDV17";
-  console.log(API_KEY);
+  // console.log("API_KEY:", API_KEY);
 
   let finItemSymbol = symbol;
   let financialChartXValuesFunction = [];
@@ -11,7 +10,8 @@ const getFinancialItem = (symbol) => async (dispatch) => {
   let financialChartOpenValuesFunction = [];
   let financialChartHighValuesFunction = [];
   let financialChartLowValuesFunction = [];
-  console.log(finItemSymbol);
+
+  // console.log("finItemSymbol:", finItemSymbol);
 
   try {
     await fetch(
@@ -21,11 +21,10 @@ const getFinancialItem = (symbol) => async (dispatch) => {
         return response.json();
       })
       .then(function (data) {
-        console.log("data:", data);
+        // console.log("data:", data);
 
         for (let key in data["Time Series (Daily)"]) {
           financialChartXValuesFunction.push(key);
-          console.log(key);
           financialChartCloseValuesFunction.push(data["Time Series (Daily)"][key]["4. close"]);
           financialChartOpenValuesFunction.push(data["Time Series (Daily)"][key]["1. open"]);
           financialChartHighValuesFunction.push(data["Time Series (Daily)"][key]["2. high"]);

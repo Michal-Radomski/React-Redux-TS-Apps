@@ -5,8 +5,6 @@ const initialState = {
 };
 
 export default function financialItemReducer(state = initialState, action) {
-  // const {type,payload}= action;
-
   if (action.type === GET_FINANCIAL_ITEM) {
     return {
       ...state,

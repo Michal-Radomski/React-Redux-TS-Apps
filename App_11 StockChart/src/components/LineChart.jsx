@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Plot from "react-plotly.js";
 
 const LineChart = (props) => {
-  // console.log(props);
+  // console.log("LineChart props:", props);
   return (
     <React.Fragment>
       <Plot
@@ -23,10 +23,10 @@ const LineChart = (props) => {
   );
 };
 
-// LineChart.propTypes = {
-//   financialItem: PropTypes.object.isRequired,
-//   financialItemName: PropTypes.string.isRequired,
-//   color: PropTypes.string.isRequired,
-// };
+LineChart.propTypes = {
+  financialItem: PropTypes.object.isRequired,
+  financialItemName: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+};
 
 export default LineChart;
