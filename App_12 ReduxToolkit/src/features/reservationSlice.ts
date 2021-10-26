@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 const initialState: ReservationState = {
-  // value: ["Selena"],
+  // value: ["Selena Gomez"],
   value: [],
 };
 
