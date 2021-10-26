@@ -6,7 +6,7 @@ const initialState: CustomerState = {
 
 export const customerSlice = createSlice({
   name: "customer",
-  initialState,
+  initialState: initialState,
   reducers: {
     addCustomer: (state, action: PayloadAction<Customer>) => {
       state.value.push(action.payload);

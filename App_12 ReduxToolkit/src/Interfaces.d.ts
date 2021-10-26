@@ -18,11 +18,17 @@ interface Customer {
   food: string[];
 }
 
+interface CustomerState {
+  value: Customer[];
+}
+
 interface AddFoodToCustomerPayload {
   food: string;
   id: string;
 }
 
-interface CustomerState {
-  value: Customer[];
+interface CustomerCardType {
+  id: string;
+  name: string;
+  food: string[];
 }

@@ -5,11 +5,11 @@ import CustomerCard from "./components/CustomerCard";
 import ReservationCard from "./components/ReservationCard";
 import {addReservation} from "./features/reservationSlice";
 
-function App() {
+function App(): JSX.Element {
   const [reservationNameInput, setReservationNameInput] = React.useState("");
 
   const reservation = useSelector((state: RootState) => state.reservations.value);
-  const customers = useSelector((state: RootState) => state.customers.value);
+  const customers = useSelector((state: RootState) => state.customer.value);
 
   const dispatch = useDispatch();
 
@@ -48,8 +48,8 @@ function App() {
               </div>
             </div>
           </div> */}
-          {customers.map((customer) => {
-            return <CustomerCard />;
+          {customers.map((customer: CustomerCardType) => {
+            return <CustomerCard id={customer.id} name={customer.name} food={customer.food} />;
           })}
         </div>
       </div>
