@@ -48,3 +48,5 @@ Applications written in **TS using React and Redux**:
     [tutorial](https://paolo-delia99.medium.com/using-react-and-plotly-js-to-display-stock-chart-2b9e8bdc71c7), migration
     JS->TS like above. The API key is not hosted on [github.com](https://github.com/). The data is retrieved from
     [Alpha Vantage](https://www.alphavantage.co/support/#api-key).
+
+12. App_12 (React+Redux+TS) is written according to this [tutorial](https://www.youtube.com/watch?v=jR4fagDcvrc).
