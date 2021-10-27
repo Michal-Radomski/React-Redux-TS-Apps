@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import {useSelector, useDispatch} from "react-redux";
-import {setFirstCurrency4_G, setSecondCurrency4_G} from "./currencySlice";
+import {setFirstCurrency4_G, setSecondCurrency4_G, setRate4_G} from "./currencySlice";
 
 const API_KEY: ProcessEnv = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
 
@@ -16,6 +16,7 @@ const CurrencyConverter4 = (): JSX.Element => {
   const [rate4, setRate4] = React.useState(Currencies.rate4_G);
 
   const getRate4 = (firstCurrency4: string, secondCurrency4: string) => {
+    dispatch(setRate4_G(0.5));
     axios({
       method: "GET",
       url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency4}_${secondCurrency4}&compact=ultra`,
@@ -25,6 +26,9 @@ const CurrencyConverter4 = (): JSX.Element => {
         responseRate = responseRate.toFixed(3);
 
         setRate4(responseRate);
+        console.log(rate4);
+
+        dispatch(setRate4_G(rate4));
       })
       .catch((error) => {
         console.log(error);
@@ -36,6 +40,7 @@ const CurrencyConverter4 = (): JSX.Element => {
     event.preventDefault();
     dispatch(setFirstCurrency4_G(firstCurrency4));
     dispatch(setSecondCurrency4_G(secondCurrency4));
+    getRate4(firstCurrency4, secondCurrency4);
   };
 
   return (
@@ -59,8 +64,8 @@ const CurrencyConverter4 = (): JSX.Element => {
         </button>
       </div>
       <div className="divConvert4">
-        1{firstCurrency4}={rate4}
-        {secondCurrency4}
+        1{Currencies.firstCurrency4_G}={Currencies.rate4_G}
+        {Currencies.secondCurrency4_G}
       </div>
     </React.Fragment>
   );

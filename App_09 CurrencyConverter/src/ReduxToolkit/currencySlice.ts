@@ -17,8 +17,11 @@ export const currencySlice = createSlice({
     setSecondCurrency4_G: (state: RootState, action: PayloadAction<string>) => {
       state.secondCurrency4_G = action.payload;
     },
+    setRate4_G: (state: RootState, action: PayloadAction<number>) => {
+      state.rate4_G = action.payload;
+    },
   },
 });
 
-export const {setFirstCurrency4_G, setSecondCurrency4_G} = currencySlice.actions;
+export const {setFirstCurrency4_G, setSecondCurrency4_G, setRate4_G} = currencySlice.actions;
 export default currencySlice.reducer;
