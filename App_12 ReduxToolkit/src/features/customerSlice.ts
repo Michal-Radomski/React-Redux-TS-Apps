@@ -8,11 +8,11 @@ export const customerSlice = createSlice({
   name: "customer",
   initialState: initialState,
   reducers: {
-    addCustomer: (state, action: PayloadAction<Customer>) => {
+    addCustomer: (state: RootState, action: PayloadAction<Customer>) => {
       state.value.push(action.payload);
     },
-    addFoodToCustomer: (state, action: PayloadAction<AddFoodToCustomerPayload>) => {
-      state.value.forEach((customer) => {
+    addFoodToCustomer: (state: RootState, action: PayloadAction<AddFoodToCustomerPayload>) => {
+      state.value.forEach((customer: Customer) => {
         if (customer.id === action.payload.id) {
           customer.food.push(action.payload.food);
         }
@@ -24,3 +24,5 @@ export const customerSlice = createSlice({
 export const {addCustomer, addFoodToCustomer} = customerSlice.actions;
 
 export default customerSlice.reducer;
+
+// console.log("customerSlice:", customerSlice);

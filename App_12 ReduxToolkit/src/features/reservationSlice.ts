@@ -9,12 +9,12 @@ export const reservationSlice = createSlice({
   name: "reservations",
   initialState: initialState,
   reducers: {
-    addReservation: (state, action: PayloadAction<string>) => {
+    addReservation: (state: RootState, action: PayloadAction<string>) => {
+      // console.log("state:", state);
       // console.log("Adding reservation");
       state.value.push(action.payload);
     },
-    removeReservation: (state, action: PayloadAction<number>) => {
-      // console.log("state:", state);
+    removeReservation: (state: RootState, action: PayloadAction<number>) => {
       state.value.splice(action.payload, 1);
     },
   },

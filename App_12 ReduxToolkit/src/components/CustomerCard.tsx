@@ -3,16 +3,18 @@ import {useDispatch} from "react-redux";
 import {addFoodToCustomer} from "../features/customerSlice";
 
 function CustomerCard({id, name, food}: CustomerCardType): JSX.Element {
+  // console.log("id, name, food:", id, name, food);
   const [customerFoodInput, setCustomerFoodInput] = React.useState("");
   const dispatch = useDispatch();
   return (
-    <div className="customer-food-card-container">
+    <div className="customer-food-card-container" key={id}>
       {/* <p>Selena Gomez</p> */}
       <h5>{name}</h5>
       <div className="customer-foods-container">
         <div className="customer-food">
           {food.map((food) => {
-            return <p>{food}</p>;
+            // console.log("food:", food);
+            return <p key={food}>{food}</p>;
           })}
         </div>
         <div className="customer-food-input-container">
@@ -22,14 +24,14 @@ function CustomerCard({id, name, food}: CustomerCardType): JSX.Element {
               if (!customerFoodInput) return;
               dispatch(
                 addFoodToCustomer({
-                  id,
+                  id: id,
                   food: customerFoodInput,
                 })
               );
               setCustomerFoodInput("");
             }}
           >
-            Add
+            Add Food
           </button>
         </div>
       </div>

@@ -5,9 +5,11 @@ import {v4 as uuid} from "uuid";
 
 const ReservationCard = ({name, index}: ReservationCardTypes): JSX.Element => {
   const dispatch = useDispatch();
+  // console.log("name, index:", name, index);
 
   return (
     <div
+      key={index}
       onClick={() => {
         dispatch(removeReservation(index));
         dispatch(
@@ -17,6 +19,7 @@ const ReservationCard = ({name, index}: ReservationCardTypes): JSX.Element => {
             food: [],
           })
         );
+        // console.log(addCustomer);
       }}
       className="reservation-card-container"
     >

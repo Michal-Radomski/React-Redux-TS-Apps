@@ -8,3 +8,5 @@ export const store = configureStore({
     customer: customerReducer,
   },
 });
+
+// console.log("store:", store);

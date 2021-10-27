@@ -28,13 +28,14 @@ function App(): JSX.Element {
             <div className="reservation-cards-container">
               {/* <div className="reservation-card-container">Prezes Jarek</div> */}
               {reservation.map((name: string, index: number) => {
+                // console.log("name, index:", name, index);
                 return <ReservationCard key={index} name={name} index={index} />;
               })}
             </div>
           </div>
           <div className="reservation-input-container">
             <input value={reservationNameInput} onChange={(event) => setReservationNameInput(event.target.value)} />
-            <button onClick={handleAddReservations}>Add</button>
+            <button onClick={handleAddReservations}>Add a Customer</button>
           </div>
         </div>
         <div className="customer-food-container">
@@ -49,7 +50,7 @@ function App(): JSX.Element {
             </div>
           </div> */}
           {customers.map((customer: CustomerCardType) => {
-            return <CustomerCard id={customer.id} name={customer.name} food={customer.food} />;
+            return <CustomerCard id={customer.id} name={customer.name} food={customer.food} key={customer.id} />;
           })}
         </div>
       </div>
