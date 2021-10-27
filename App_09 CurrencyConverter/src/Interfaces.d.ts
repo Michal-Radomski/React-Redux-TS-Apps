@@ -32,3 +32,9 @@ interface Props {
   setCurrency1: Function;
   setCurrency2: Function;
 }
+
+interface State_4 {
+  firstCurrency4_G: string;
+  secondCurrency4_G: string;
+  rate4_G: number;
+}

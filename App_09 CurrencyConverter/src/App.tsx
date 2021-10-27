@@ -17,29 +17,32 @@ import {StoreProvider} from "./ReactHooks/Store";
 
 // Redux Toolkit -> import
 import CurrencyConverter4 from "./ReduxToolkit/CurrencyConverter4";
+import {Store} from "./ReduxToolkit/Store";
 
 // Redux-Store + Redux DevTools -> Setting Up
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
+// declare global {
+//   interface Window {
+//     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+//   }
+// }
 
-const middleware = [thunk];
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
+// const middleware = [thunk];
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
 
 function App(): JSX.Element {
   return (
     <React.Fragment>
-      <CurrencyConverter />
+      {/* <CurrencyConverter />
       <Provider store={store}>
         <CurrencyConverter2 />
       </Provider>
       <StoreProvider>
         <CurrencyConverter3 />
-      </StoreProvider>
-      <CurrencyConverter4 />
+      </StoreProvider> */}
+      <Provider store={Store}>
+        <CurrencyConverter4 />
+      </Provider>
     </React.Fragment>
   );
 }
