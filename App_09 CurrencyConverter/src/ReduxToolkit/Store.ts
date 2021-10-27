@@ -7,3 +7,5 @@ export const Store = configureStore({
     currencies: currencyReducer,
   },
 });
+
+// console.log("Store:", Store);

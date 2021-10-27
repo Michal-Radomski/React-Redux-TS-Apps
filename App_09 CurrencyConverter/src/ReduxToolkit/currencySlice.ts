@@ -19,9 +19,12 @@ export const currencySlice = createSlice({
     },
     setRate4_G: (state: RootState, action: PayloadAction<number>) => {
       state.rate4_G = action.payload;
+      // console.log("action.payload:", action.payload);
     },
   },
 });
 
 export const {setFirstCurrency4_G, setSecondCurrency4_G, setRate4_G} = currencySlice.actions;
 export default currencySlice.reducer;
+
+// console.log("currencySlice:", currencySlice);

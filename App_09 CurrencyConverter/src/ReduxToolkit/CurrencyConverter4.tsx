@@ -7,16 +7,16 @@ const API_KEY: ProcessEnv = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
 
 const CurrencyConverter4 = (): JSX.Element => {
   const Currencies = useSelector((state: RootState) => state.currencies);
-
-  const dispatch = useDispatch();
-  console.log(Currencies, dispatch);
+  const dispatch: Dispatch = useDispatch();
+  // console.log("Currencies, dispatch:", Currencies, dispatch);
 
   const [firstCurrency4, setFirstCurrency4] = React.useState(Currencies.firstCurrency4_G);
   const [secondCurrency4, setSecondCurrency4] = React.useState(Currencies.secondCurrency4_G);
-  const [rate4, setRate4] = React.useState(Currencies.rate4_G);
+  // console.log("Local State: ", firstCurrency4, secondCurrency4);
 
   const getRate4 = (firstCurrency4: string, secondCurrency4: string) => {
-    dispatch(setRate4_G(0.5));
+    //- for testing purposes only
+    // dispatch(setRate4_G(0.5));
     axios({
       method: "GET",
       url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency4}_${secondCurrency4}&compact=ultra`,
@@ -24,11 +24,7 @@ const CurrencyConverter4 = (): JSX.Element => {
       .then((response: Fetch) => {
         let responseRate = response.data[`${firstCurrency4}_${secondCurrency4}`];
         responseRate = responseRate.toFixed(3);
-
-        setRate4(responseRate);
-        console.log(rate4);
-
-        dispatch(setRate4_G(rate4));
+        dispatch(setRate4_G(responseRate));
       })
       .catch((error) => {
         console.log(error);
@@ -36,7 +32,6 @@ const CurrencyConverter4 = (): JSX.Element => {
   };
 
   const handleSubmit = (event: React.SyntheticEvent) => {
-    // console.log("firstCurrency, secondCurrency:", firstCurrency, secondCurrency);
     event.preventDefault();
     dispatch(setFirstCurrency4_G(firstCurrency4));
     dispatch(setSecondCurrency4_G(secondCurrency4));
