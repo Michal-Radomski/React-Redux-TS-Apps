@@ -1,10 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+
 import App from "./App";
+import rootReducer from "./reducers";
+import {addUser} from "./actions/index";
+
+const store = createStore(rootReducer);
+store.dispatch(addUser("Me"));
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
