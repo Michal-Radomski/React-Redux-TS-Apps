@@ -9,9 +9,8 @@ Applications written in **TS using React and Redux**:
    [tutorial](https://typeofnan.dev/your-first-react-typescript-project-todo-app).
 
 3. App_03 (React+Redux+TS) is written according to this
-   [tutorial](https://medium.com/backticks-tildes/setting-up-a-redux-project-with-create-react-app-e363ab2329b8).
-
-   Migration a react app from JS to TS is done according to this
+   [tutorial](https://medium.com/backticks-tildes/setting-up-a-redux-project-with-create-react-app-e363ab2329b8). Migration a
+   react app from JS to TS is done according to this
    [tutorial](https://www.sitepoint.com/how-to-migrate-a-react-app-to-typescript/).
 
 4. App_04 (React+Redux+TS) is written according to this [tutorial](https://chriscourses.com/blog/redux), migration JS->TS
@@ -51,3 +50,6 @@ Applications written in **TS using React and Redux**:
     [Alpha Vantage](https://www.alphavantage.co/support/#api-key).
 
 12. App_12 (React+Redux+TS) is written according to this [tutorial](https://www.youtube.com/watch?v=jR4fagDcvrc).
+
+13. App_13 (React+Redux+TS) is written according to this [tutorial](https://www.youtube.com/watch?v=x_fHXt9V3zQ), migration
+    JS->TS like above.
