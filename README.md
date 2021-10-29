@@ -54,3 +54,6 @@ Applications written in **TS using React and Redux**:
 13. App_13 (React+Redux+TS) is written according to this [tutorial](https://www.youtube.com/watch?v=x_fHXt9V3zQ). Migration
     JS->TS on React like above and migration JS->TS on Node.js is done according to this
     [tutorial](https://dev.to/llldar/migrate-to-typescript-on-node-js-2jhg).
+
+14. App_14 (React+Redux+TS) is written according to this [tutorial](https://www.youtube.com/watch?v=khJlrj3Y6Ls). Migration
+    React->React-Redux and JS->TS like above.
