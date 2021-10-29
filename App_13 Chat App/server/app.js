@@ -1,8 +1,6 @@
-"use strict";
-exports.__esModule = true;
-var WebSocket = require("ws");
+var webSocket = require("ws");
 // Server App
-var wss = new WebSocket.Server({ port: 8989 });
+var wss = new webSocket.Server({ port: 8989 });
 var users = [];
 var broadcast = function (data, ws) {
     wss.clients.forEach(function (client) {
@@ -48,3 +46,4 @@ wss.on("connection", function (ws) {
         }, ws);
     });
 });
+console.log("Server is working...");

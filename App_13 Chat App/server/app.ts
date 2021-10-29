@@ -1,6 +1,4 @@
-export {};
-
-const WebSocket = require("ws");
+const webSocket = require("ws");
 
 // Types and Interfaces
 type User = {
@@ -26,7 +24,7 @@ interface WS {
 }
 
 // Server App
-const wss = new WebSocket.Server({port: 8989});
+const wss = new webSocket.Server({port: 8989});
 const users: Users = [];
 
 const broadcast = (data: Data, ws: WS) => {
@@ -86,3 +84,5 @@ wss.on("connection", (ws: WS) => {
     );
   });
 });
+
+console.log("Server is working...");
