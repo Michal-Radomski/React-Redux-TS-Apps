@@ -1,7 +1,7 @@
 import * as types from "../constants/ActionTypes";
 import {addUser, messageReceived, populateUsersList} from "../actions";
 
-const setupSocket = (dispatch, username) => {
+const setupSocket = (dispatch: AppDispatch, username: string) => {
   const socket = new WebSocket("ws://localhost:8989");
 
   socket.onopen = () => {

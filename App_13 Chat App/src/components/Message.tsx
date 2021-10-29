@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 import PropTypes from "prop-types";
 
-const Message = ({message, author}) => (
+const Message = ({message, author}: IMessage): JSX.Element => (
   <p>
     <i>{author}</i> : {message}
   </p>

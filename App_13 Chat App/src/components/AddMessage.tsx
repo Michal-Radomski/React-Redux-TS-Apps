@@ -1,8 +1,8 @@
-import React from "react";
+// import React from "react";
 import PropTypes from "prop-types";
 
-const AddMessage = (props) => {
-  let input;
+const AddMessage = (props: {dispatch: AppDispatch}) => {
+  let input: HTMLElement | any;
 
   return (
     <section id="new-message">
@@ -16,6 +16,7 @@ const AddMessage = (props) => {
         type="text"
         ref={(node) => {
           input = node;
+          // console.log(input);
         }}
       />
     </section>

@@ -1,12 +1,13 @@
-import React from "react";
+// import React from "react";
 import PropTypes from "prop-types";
 
-const Sidebar = ({users}) => (
+const Sidebar = (props: {users: Users}): JSX.Element => (
   <aside id="sidebar" className="sidebar">
     <ul>
-      {users.map((user) => (
+      {props.users.map((user: User) => (
         <li key={user.id}>{user.name}</li>
       ))}
+      {/* {console.log(props.users)} */}
     </ul>
   </aside>
 );

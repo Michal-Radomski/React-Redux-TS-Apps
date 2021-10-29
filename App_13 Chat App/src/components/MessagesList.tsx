@@ -1,13 +1,14 @@
-import React from "react";
+// import React from "react";
 import PropTypes from "prop-types";
 import Message from "./Message";
 
-const MessagesList = ({messages}) => (
+const MessagesList = (props: {messages: IMessages}): JSX.Element => (
   <section id="messages-list">
     <ul>
-      {messages.map((message) => (
+      {props.messages.map((message: IMessage) => (
         <Message key={message.id} {...message} />
       ))}
+      {/* {console.log(props.messages)} */}
     </ul>
   </section>
 );

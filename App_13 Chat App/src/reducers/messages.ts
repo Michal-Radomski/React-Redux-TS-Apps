@@ -1,6 +1,6 @@
 import * as types from "../constants/ActionTypes";
 
-const messages = (state = [], action) => {
+const messages = (state: RootState = [], action: Action) => {
   switch (action.type) {
     case types.ADD_MESSAGE: //- Two cases return the same
     case types.MESSAGE_RECEIVED:

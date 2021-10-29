@@ -1,11 +1,10 @@
-import React from "react";
+// import React from "react";
 import "./App.scss";
 import {Sidebar} from "./containers/Sidebar";
 import {MessagesList} from "./containers/MessagesList";
 import {AddMessage} from "./containers/AddMessage";
 
-const App = (props) => {
-  console.log("props:", props);
+const App = () => {
   return (
     <div id="container">
       <Sidebar />
