@@ -29,7 +29,7 @@ const users: Users = [];
 
 const broadcast = (data: Data, ws: WS) => {
   wss.clients.forEach((client: WS) => {
-    if (client.readyState === WebSocket.OPEN && client !== ws) {
+    if (client.readyState === webSocket.OPEN && client !== ws) {
       client.send(JSON.stringify(data));
     }
   });

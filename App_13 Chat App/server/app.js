@@ -4,7 +4,7 @@ var wss = new webSocket.Server({ port: 8989 });
 var users = [];
 var broadcast = function (data, ws) {
     wss.clients.forEach(function (client) {
-        if (client.readyState === WebSocket.OPEN && client !== ws) {
+        if (client.readyState === webSocket.OPEN && client !== ws) {
             client.send(JSON.stringify(data));
         }
     });
