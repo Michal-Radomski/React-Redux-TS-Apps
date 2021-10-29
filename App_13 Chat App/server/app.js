@@ -1,62 +1,50 @@
-const WebSocket = require("ws");
-
-const wss = new WebSocket.Server({port: 8989});
-const users = [];
-
-const broadcast = (data, ws) => {
-  wss.clients.forEach((client) => {
-    if (client.readyState === WebSocket.OPEN && client !== ws) {
-      client.send(JSON.stringify(data));
-    }
-  });
+"use strict";
+exports.__esModule = true;
+var WebSocket = require("ws");
+// Server App
+var wss = new WebSocket.Server({ port: 8989 });
+var users = [];
+var broadcast = function (data, ws) {
+    wss.clients.forEach(function (client) {
+        if (client.readyState === WebSocket.OPEN && client !== ws) {
+            client.send(JSON.stringify(data));
+        }
+    });
 };
-
-wss.on("connection", (ws) => {
-  let index;
-  ws.on("message", (message) => {
-    const data = JSON.parse(message);
-    switch (data.type) {
-      case "ADD_USER": {
-        index = users.length;
-        users.push({name: data.name, id: index + 1});
-        ws.send(
-          JSON.stringify({
+wss.on("connection", function (ws) {
+    var index;
+    ws.on("message", function (message) {
+        var data = JSON.parse(message);
+        switch (data.type) {
+            case "ADD_USER": {
+                index = users.length;
+                users.push({ name: data.name, id: index + 1 });
+                ws.send(JSON.stringify({
+                    type: "USERS_LIST",
+                    users: users
+                }));
+                broadcast({
+                    type: "USERS_LIST",
+                    users: users
+                }, ws);
+                break;
+            }
+            case "ADD_MESSAGE":
+                broadcast({
+                    type: "ADD_MESSAGE",
+                    message: data.message,
+                    author: data.author
+                }, ws);
+                break;
+            default:
+                break;
+        }
+    });
+    ws.on("close", function () {
+        users.splice(index, 1);
+        broadcast({
             type: "USERS_LIST",
-            users: users,
-          })
-        );
-        broadcast(
-          {
-            type: "USERS_LIST",
-            users: users,
-          },
-          ws
-        );
-        break;
-      }
-      case "ADD_MESSAGE":
-        broadcast(
-          {
-            type: "ADD_MESSAGE",
-            message: data.message,
-            author: data.author,
-          },
-          ws
-        );
-        break;
-      default:
-        break;
-    }
-  });
-
-  ws.on("close", () => {
-    users.splice(index, 1);
-    broadcast(
-      {
-        type: "USERS_LIST",
-        users: users,
-      },
-      ws
-    );
-  });
+            users: users
+        }, ws);
+    });
 });
