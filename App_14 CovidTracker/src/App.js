@@ -11,7 +11,7 @@ import {Cards, Chart, CountryPicker} from "./components/index";
 import {fetchData} from "./api/index";
 
 class App extends React.Component {
-  state = {data: {}, recoveredValue: undefined, selectCountry: ""};
+  state = {data: {}, recoveredValue: undefined, selectedCountry: ""};
 
   async componentDidMount() {
     const fetchedData = await fetchData();
@@ -25,15 +25,15 @@ class App extends React.Component {
     const fetchedDataCountry = await fetchData(country);
     // console.log(country);
     // console.log(fetchedData);
-    this.setState({data: fetchedDataCountry, selectCountry: country});
+    this.setState({data: fetchedDataCountry, selectedCountry: country});
     // console.log(this.state);
   };
 
   render() {
     return (
       <div className={styles.container}>
-        <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} />
-        <Chart data={this.state.data} country={this.state.selectCountry} />
+        <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} country={this.state.selectedCountry} />
+        <Chart data={this.state.data} country={this.state.selectedCountry} />
         <CountryPicker handleCountryChange={this.handleCountryChange} />
       </div>
     );

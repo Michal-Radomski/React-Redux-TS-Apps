@@ -5,15 +5,18 @@ import cx from "classnames";
 
 import styles from "./Cards.module.scss";
 
-const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue}) => {
+const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue, country}) => {
   // console.log(confirmed, recovered, deaths, lastUpdate);
   if (!confirmed || !recovered || !lastUpdate | !deaths | !recoveredValue) {
     return "Loading...";
   }
+
+  // console.log(country);
+
   return (
     <div className={styles.container}>
       <Typography gutterBottom variant="h4" component="h2">
-        Global
+        {country ? country : "Globally"}
       </Typography>
       <Grid container spacing={3} justifyContent="center">
         <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
