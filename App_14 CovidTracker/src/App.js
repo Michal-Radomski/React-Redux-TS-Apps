@@ -11,18 +11,20 @@ import {Cards, Chart, CountryPicker} from "./components/index";
 import {fetchDataTest} from "./api/index";
 
 class App extends React.Component {
-  state = {data: {}};
+  state = {data: {}, recoveredValue: undefined};
 
   async componentDidMount() {
     const fetchedData = await fetchDataTest();
-    // console.log(data);
-    this.setState({data: fetchedData});
+    console.log(fetchedData.recovered.value);
+    const valueRecovered = fetchedData.recovered.value !== 0 ? fetchedData.recovered.value : "No Data";
+    console.log(valueRecovered);
+    this.setState({data: fetchedData, recoveredValue: valueRecovered});
   }
 
   render() {
     return (
       <div className={styles.container}>
-        <Cards date={this.state.data} />
+        <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} />
         <Chart />
         <CountryPicker />
       </div>
