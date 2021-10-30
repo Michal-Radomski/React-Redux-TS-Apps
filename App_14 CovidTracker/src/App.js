@@ -9,6 +9,7 @@ import styles from "./App.module.scss";
 
 import {Cards, Chart, CountryPicker} from "./components/index";
 import {fetchData} from "./api/index";
+import covidImage from "./images/image.png";
 
 class App extends React.Component {
   state = {data: {}, recoveredValue: undefined, selectedCountry: ""};
@@ -32,6 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <div className={styles.container}>
+        <img className={styles.image} src={covidImage} alt="COVID-19" />
         <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} country={this.state.selectedCountry} />
         <Chart data={this.state.data} country={this.state.selectedCountry} />
         <CountryPicker handleCountryChange={this.handleCountryChange} />
