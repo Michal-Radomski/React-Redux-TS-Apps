@@ -22,7 +22,7 @@ const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue
               Infected
             </Typography>
             <Typography variant="h5">
-              <CountUp start={0} end={confirmed.value} duration={2.5} separator=" " />
+              <CountUp start={0} end={confirmed.value} duration={2.0} separator=" " />
             </Typography>
             <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
             <Typography variant="body2">Number of active cases of COVID-19</Typography>

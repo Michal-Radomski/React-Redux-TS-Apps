@@ -2,24 +2,25 @@ import axios from "axios";
 
 const url = "https://covid19.mathdro.id/api";
 
-export const fetchDataTest = async () => {
-  try {
-    const {
-      data: {confirmed, recovered, deaths, lastUpdate},
-    } = await axios.get(url);
-    // const modifiedData = {
-    //   confirmed: confirmed,
-    //   recovered: recovered,
-    //   deaths: deaths,
-    //   lastUpdate: lastUpdate,
-    // };
-    // return modifiedData;
-    // -The same as above
-    return {confirmed: confirmed, recovered: recovered, deaths: deaths, lastUpdate: lastUpdate};
-  } catch (error) {
-    return error;
-  }
-};
+// -Previous version of the function
+// export const fetchData = async () => {
+//   try {
+//     const {
+//       data: {confirmed, recovered, deaths, lastUpdate},
+//     } = await axios.get(url);
+//     // const modifiedData = {
+//     //   confirmed: confirmed,
+//     //   recovered: recovered,
+//     //   deaths: deaths,
+//     //   lastUpdate: lastUpdate,
+//     // };
+//     // return modifiedData;
+//     // -The same as above
+//     return {confirmed: confirmed, recovered: recovered, deaths: deaths, lastUpdate: lastUpdate};
+//   } catch (error) {
+//     return error;
+//   }
+// };
 
 export const fetchData = async (country) => {
   let changeableUrl = url;
@@ -34,7 +35,7 @@ export const fetchData = async (country) => {
 
     return {confirmed, recovered, deaths, lastUpdate};
   } catch (error) {
-    return error;
+    console.log(error);
   }
 };
 
@@ -50,25 +51,9 @@ export const fetchDailyData = async () => {
     }));
     return modifiedData;
   } catch (error) {
-    return error;
+    console.log(error);
   }
 };
-
-// Instead of Global, it fetches the daily data for the US
-// export const fetchDailyData = async () => {
-//   try {
-//     const {data} = await axios.get("https://api.covidtracking.com/v1/us/daily.json");
-
-//     return data.map(({positive, recovered, death, dateChecked: date}) => ({
-//       confirmed: positive,
-//       recovered,
-//       deaths: death,
-//       date,
-//     }));
-//   } catch (error) {
-//     return error;
-//   }
-// };
 
 export const fetchCountries = async () => {
   try {
@@ -78,6 +63,6 @@ export const fetchCountries = async () => {
 
     return countries.map((country) => country.name);
   } catch (error) {
-    return error;
+    console.log(error);
   }
 };
