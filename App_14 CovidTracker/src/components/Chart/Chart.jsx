@@ -4,8 +4,10 @@ import {Line, Bar} from "react-chartjs-2";
 import {fetchDailyData} from "../../api";
 import styles from "./Chart.module.scss";
 
-const Chart = ({data, selectedCountry}) => {
+const Chart = ({data, country}) => {
   const [dailyData, setDailyData] = React.useState([]);
+
+  // console.log(country);
 
   React.useEffect(() => {
     const fetchAPI = async () => {
@@ -48,15 +50,17 @@ const Chart = ({data, selectedCountry}) => {
         labels: ["Infected", data.recovered.value === 0 ? "Recovered: No Data" : "Recovered", "Deaths"],
         datasets: [
           {
-            label: "People",
+            label: ["Infected", "Recovered", "Deaths"],
             backgroundColor: ["rgba(0, 0, 255, 0.5)", "rgba(0, 255, 0, 0.5)", "rgba(255, 0, 0, 0.5)"],
             data: [data.confirmed.value, data.recovered.value, data.deaths.value],
           },
         ],
       }}
       options={{
-        legend: {display: false},
-        title: {display: true, text: `Current state in ${selectedCountry}`, position: "top"},
+        plugins: {
+          legend: {display: false},
+          title: {display: true, text: `Current state in ${country ? country : "the World"}`, position: "top"},
+        },
       }}
     />
   ) : null;
