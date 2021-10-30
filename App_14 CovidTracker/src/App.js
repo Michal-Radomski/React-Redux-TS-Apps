@@ -15,9 +15,9 @@ class App extends React.Component {
 
   async componentDidMount() {
     const fetchedData = await fetchDataTest();
-    console.log(fetchedData.recovered.value);
+    // console.log(fetchedData.recovered.value);
     const valueRecovered = fetchedData.recovered.value !== 0 ? fetchedData.recovered.value : "No Data";
-    console.log(valueRecovered);
+    // console.log(valueRecovered);
     this.setState({data: fetchedData, recoveredValue: valueRecovered});
   }
 
