@@ -7,18 +7,18 @@ import styles from "./App.module.scss";
 // import Chart from "./components/Chart/Chart"
 // import CountryPicker from "./components/CountryPicker/CountryPicker"
 // - Instead of above import
-
 import {Cards, Chart, CountryPicker} from "./components/index";
+
 // import {fetchData} from "./api/index"; //+ No Redux Version
-import {fetchDataGlobal, fetchDataGlobalForCountry} from "./redux/actions";
+import {fetchDataGlobal} from "./redux/actions"; // - Redux Version
 import covidImage from "./images/image.png";
 
 class App extends React.Component {
-  state = {data: {}, recoveredValue: undefined, selectedCountry: ""};
+  state = {data: {}, recoveredValue: undefined, selectedCountry: ""}; //+ No Redux Version
 
   async componentDidMount() {
     // - Redux Version
-    // console.log("this.props:", this.props);
+    console.log("this.props-App:", this.props);
     this.props.fetchDataGlobal();
 
     // + No Redux Version
@@ -29,29 +29,28 @@ class App extends React.Component {
     // this.setState({data: fetchedData, recoveredValue: valueRecovered});
   }
 
-  handleCountryChange = async (country) => {
-    // + No Redux Version
-    // const fetchedDataCountry = await fetchData(country);
-    // console.log(country);
-    // console.log(fetchedDataCountry);
-    // this.setState({data: fetchedDataCountry, selectedCountry: country});
-    // console.log(this.state);
-
-    // - Redux Version
-    const fetchedDataCountry = await fetchDataGlobal(country);
-    console.log(country);
-    console.log(fetchedDataCountry);
-    this.props.fetchDataGlobalForCountry(country);
-    fetchDataGlobalForCountry(country);
-  };
+  // + No Redux Version
+  // handleCountryChange = async (country) => {
+  //   const fetchedDataCountry = await fetchData(country);
+  //   console.log(country);
+  //   console.log(fetchedDataCountry);
+  //   this.setState({data: fetchedDataCountry, selectedCountry: country});
+  //   console.log(this.state);
+  // };
 
   render() {
     return (
       <div className={styles.container}>
         <img className={styles.image} src={covidImage} alt="COVID-19" />
-        <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} country={this.state.selectedCountry} />
+        {/* // + No Redux Version */}
+        {/* <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} country={this.state.selectedCountry} /> */}
+        {/* // - Redux Version */}
+        <Cards />
         <Chart data={this.state.data} country={this.state.selectedCountry} />
-        <CountryPicker handleCountryChange={this.handleCountryChange} />
+        {/* // + No Redux Version */}
+        {/* <CountryPicker handleCountryChange={this.handleCountryChange} /> */}
+        {/* // - Redux Version */}
+        <CountryPicker />
       </div>
     );
   }

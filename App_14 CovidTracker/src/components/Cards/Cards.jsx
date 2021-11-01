@@ -2,21 +2,36 @@ import React from "react";
 import {Card, CardContent, Typography, Grid} from "@material-ui/core";
 import CountUp from "react-countup";
 import cx from "classnames";
+import {useSelector} from "react-redux";
 
 import styles from "./Cards.module.scss";
 
-const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue, country}) => {
-  // console.log(confirmed, recovered, deaths, lastUpdate);
-  if (!confirmed || !recovered || !lastUpdate | !deaths | !recoveredValue) {
+//+ No Redux Version
+// const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue, country}) => {
+//   // console.log(confirmed, recovered, deaths, lastUpdate);
+//   if (!confirmed || !recovered || !lastUpdate | !deaths | !recoveredValue) {
+//     return "Loading...";
+//   }
+//   // console.log(country);
+
+//- Redux Version
+const Cards = () => {
+  const globalState = useSelector((state) => state.data);
+  console.log("globalState-Cards:", globalState);
+
+  if (
+    !globalState.data.confirmed ||
+    !globalState.data.recovered ||
+    !globalState.data.lastUpdate ||
+    !globalState.data.deaths
+  ) {
     return "Loading...";
   }
-
-  // console.log(country);
 
   return (
     <div className={styles.container}>
       <Typography gutterBottom variant="h4" component="h2">
-        {country ? country : "Globally"}
+        {globalState.selectedCountry ? globalState.selectedCountry : "Globally"}
       </Typography>
       <Grid container spacing={3} justifyContent="center">
         <Grid item component={Card} xs={12} md={3} className={cx(styles.card, styles.infected)}>
@@ -25,9 +40,9 @@ const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue
               Infected
             </Typography>
             <Typography variant="h5">
-              <CountUp start={0} end={confirmed.value} duration={2.0} separator=" " />
+              <CountUp start={0} end={globalState.data.confirmed.value} duration={2.0} separator=" " />
             </Typography>
-            <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
+            <Typography color="textSecondary">{new Date(globalState.data.lastUpdate).toDateString()}</Typography>
             <Typography variant="body2">Number of active cases of COVID-19</Typography>
           </CardContent>
         </Grid>
@@ -37,10 +52,10 @@ const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue
               Recovered
             </Typography>
             <Typography variant="h5">
-              {recoveredValue}
+              {globalState.data.recoveredValue}
               {/* <CountUp start={0} end={recovered.value} duration={2.5} separator=" " /> */}
             </Typography>
-            <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
+            <Typography color="textSecondary">{new Date(globalState.data.lastUpdate).toDateString()}</Typography>
             <Typography variant="body2">Number of recoveries cases of COVID-19</Typography>
           </CardContent>
         </Grid>
@@ -50,9 +65,9 @@ const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue
               Death
             </Typography>
             <Typography variant="h5">
-              <CountUp start={0} end={deaths.value} duration={2.5} separator=" " />
+              <CountUp start={0} end={globalState.data.deaths.value} duration={2.5} separator=" " />
             </Typography>
-            <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
+            <Typography color="textSecondary">{new Date(globalState.data.lastUpdate).toDateString()}</Typography>
             <Typography variant="body2">Number of deaths caused by COVID-19</Typography>
           </CardContent>
         </Grid>
