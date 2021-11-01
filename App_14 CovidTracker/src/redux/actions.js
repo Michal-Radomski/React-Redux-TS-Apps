@@ -12,14 +12,14 @@ export const fetchDataGlobal = (country) => {
   if (country) {
     // changeableUrl = `${url}/countries/${country}`;
   }
-  // console.log("changeableUrl:", changeableUrl);
+  console.log("changeableUrl:", changeableUrl);
   return async function (dispatch) {
     // console.log("dispatch;", dispatch);
     await axios
       .get(changeableUrl)
       .then((response) => {
         let responseData = response.data;
-        // console.log("responseData:", responseData);
+        console.log("responseData:", responseData);
         dispatch({
           type: "FETCH_DATA_GLOBAL",
           payload: {
