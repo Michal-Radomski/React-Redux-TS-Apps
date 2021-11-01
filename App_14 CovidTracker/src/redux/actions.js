@@ -38,31 +38,29 @@ export const fetchDataGlobal = (country) => {
   };
 };
 
-export const fetchDataGlobalCountry = (country) => {
+export const fetchDataGlobalCountry = (country, dispatch) => {
   // console.log("country-action:", country);
 
   let changeableUrl = `${url}/countries/${country}`;
 
   console.log("changeableUrl:", changeableUrl);
-  return async function (dispatch) {
-    // console.log("dispatch;", dispatch);
-    await fetch(changeableUrl)
-      .then((response) => response.json())
-      .then((response) => {
-        let responseData = response.data;
-        console.log("responseData:", responseData);
-        dispatch({
-          type: "FETCH_DATA_GLOBAL_COUNTRY",
-          payload: {
-            confirmed: responseData.confirmed,
-            recovered: responseData.recovered,
-            deaths: responseData.deaths,
-            lastUpdate: responseData.lastUpdate,
-          },
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+
+  // console.log("dispatch;", dispatch);
+  fetch(changeableUrl)
+    .then((response) => response.json())
+    .then((response) => {
+      console.log("response:", response);
+      dispatch({
+        type: "FETCH_DATA_GLOBAL_COUNTRY",
+        payload: {
+          confirmed: response.confirmed,
+          recovered: response.recovered,
+          deaths: response.deaths,
+          lastUpdate: response.lastUpdate,
+        },
       });
-  };
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
