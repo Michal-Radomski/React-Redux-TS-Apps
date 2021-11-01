@@ -4,17 +4,18 @@ import {useSelector, useDispatch} from "react-redux";
 
 import {fetchCountries} from "../../api";
 import styles from "./CountryPicker.module.scss";
-import {SELECT_COUNTRY, fetchDataGlobal, FETCH_DATA_GLOBAL} from "../../redux/actions";
+import {SELECT_COUNTRY, fetchDataGlobal, fetchDataGlobalCountry} from "../../redux/actions";
 
 //- Redux Version
 const CountryPicker = () => {
   const [fetchedCountries, setFetchedCountries] = React.useState([]);
-  const [country, setCountry] = React.useState("");
+  // const [country, setCountry] = React.useState("");
 
-  console.log(country);
+  // console.log("country:", country);
 
-  const globalState = useSelector((state) => state.data);
-  console.log("globalState-CountryPicker:", globalState.selectedCountry);
+  const globalState = useSelector((state) => state);
+  console.log("globalState-CountryPicker:", globalState.data);
+  fetchDataGlobal(globalState.selectedCountry);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -25,29 +26,26 @@ const CountryPicker = () => {
   }, []);
   // console.log(fetchedCountries);
 
-  function handleChange(event) {
-    setCountry(event.target.value);
-    dispatch({type: SELECT_COUNTRY, payload: event.target.value}).then((payload) => {
-      console.log(globalState.selectedCountry);
-      console.log(payload);
-    });
+  const handleChange = async (country) => {
+    // setCountry(event.target.value);
+    // dispatch({type: SELECT_COUNTRY, payload: event.target.value});
+    console.log("country:", country);
 
-    fetchDataGlobal(globalState.selectedCountry);
-    dispatch({
-      type: FETCH_DATA_GLOBAL,
-      payload: {
-        confirmed: globalState.data.confirmed,
-        recovered: globalState.data.recovered,
-        deaths: globalState.data.deaths,
-        lastUpdate: globalState.data.lastUpdate,
-      },
-    });
-  }
+    fetchDataGlobalCountry(country);
+  };
 
   return (
     <FormControl className={styles.formControl}>
-      {/* <NativeSelect defaultValue="" onChange={(event) => dispatch({type: SELECT_COUNTRY, payload: event.target.value})}> */}
-      <NativeSelect defaultValue="" onChange={handleChange}>
+      <NativeSelect
+        defaultValue=""
+        onChange={(event) => {
+          dispatch({type: SELECT_COUNTRY, payload: event.target.value});
+          // setCountry(event.target.value);
+          console.log("event.target.value:", event.target.value);
+          handleChange(event.target.value);
+        }}
+      >
+        {/* <NativeSelect defaultValue="" onChange={handleChange}> */}
         <option value="">Global</option>
         {fetchedCountries.map((country, index) => (
           <option key={index} value={country}>

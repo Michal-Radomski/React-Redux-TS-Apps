@@ -57,13 +57,12 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (props) => ({
-  data: {
-    confirmed: props.data.confirmed,
-    recovered: props.data.recovered,
-    deaths: props.data.deaths,
-    lastUpdate: props.data.lastUpdate,
-  },
-  recoveredValue: undefined,
+  confirmed: props.data.confirmed,
+  recovered: props.data.recovered,
+  deaths: props.data.deaths,
+  lastUpdate: props.data.lastUpdate,
+
+  recoveredValue: "",
   selectedCountry: "",
 });
 

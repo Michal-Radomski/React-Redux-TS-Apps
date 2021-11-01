@@ -17,7 +17,7 @@ import styles from "./Cards.module.scss";
 //- Redux Version
 const Cards = () => {
   const globalState = useSelector((state) => state.data);
-  console.log("globalState-Cards:", globalState);
+  // console.log("globalState-Cards:", globalState);
 
   if (
     !globalState.data.confirmed ||
