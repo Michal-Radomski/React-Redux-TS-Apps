@@ -38,29 +38,31 @@ export const fetchDataGlobal = (country) => {
   };
 };
 
-export const fetchDataGlobalCountry = (country, dispatch) => {
-  // console.log("country-action:", country);
+export const fetchDataGlobalCountry = (country) => {
+  return async function (dispatch) {
+    // console.log("country-action:", country);
 
-  let changeableUrl = `${url}/countries/${country}`;
+    let changeableUrl = `${url}/countries/${country}`;
 
-  console.log("changeableUrl:", changeableUrl);
+    console.log("changeableUrl:", changeableUrl);
 
-  // console.log("dispatch;", dispatch);
-  fetch(changeableUrl)
-    .then((response) => response.json())
-    .then((response) => {
-      console.log("response:", response);
-      dispatch({
-        type: "FETCH_DATA_GLOBAL_COUNTRY",
-        payload: {
-          confirmed: response.confirmed,
-          recovered: response.recovered,
-          deaths: response.deaths,
-          lastUpdate: response.lastUpdate,
-        },
+    // console.log("dispatch;", dispatch);
+    await fetch(changeableUrl)
+      .then((response) => response.json())
+      .then((response) => {
+        console.log("response:", response);
+        dispatch({
+          type: "FETCH_DATA_GLOBAL_COUNTRY",
+          payload: {
+            confirmed: response.confirmed,
+            recovered: response.recovered,
+            deaths: response.deaths,
+            lastUpdate: response.lastUpdate,
+          },
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  };
 };
