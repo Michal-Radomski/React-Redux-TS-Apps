@@ -6,7 +6,6 @@ import {useSelector, useDispatch} from "react-redux";
 
 import styles from "./Cards.module.scss";
 import {setRecoveredValue} from "../../redux/actions";
-import store from "../../redux/store";
 
 //+ No Redux Version
 // const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue, country}) => {
@@ -22,21 +21,16 @@ const Cards = () => {
   console.log("globalState-Cards:", globalState);
 
   const dispatch = useDispatch();
-  const xxx = store.getState().data.data.recovered.value;
-  console.log("xxx:", xxx);
-  React.useEffect(() => {
-    console.log("store.getState():", store.getState());
-    // if (!store.getState().data.data.recovered) {
-    //   return null;
-    // }
+  const globalStateRecoveredValue = globalState.data.recovered.value;
+  console.log("globalStateRecoveredValue:", globalStateRecoveredValue);
 
-    if (xxx === 0 || undefined) {
-      store.dispatch(setRecoveredValue("No Data"));
+  React.useEffect(() => {
+    if (globalStateRecoveredValue === 0 || !globalStateRecoveredValue) {
       setTimeout(function () {
-        dispatch(setRecoveredValue("Data"));
-      }, 3000);
+        dispatch(setRecoveredValue("No Data"));
+      }, 100);
     }
-  }, [dispatch, xxx]);
+  }, [dispatch, globalStateRecoveredValue]);
 
   if (
     !globalState.data.confirmed ||
@@ -47,19 +41,6 @@ const Cards = () => {
     return "Loading...";
   }
 
-  // const settingUpRecoveredValue = globalState.data.recovered.value;
-  // console.log("settingUpRecoveredValue1:", settingUpRecoveredValue);
-
-  // if (settingUpRecoveredValue === 0) {
-  //   console.log("settingUpRecoveredValue2:", settingUpRecoveredValue);
-  //   setRecoveredValue();
-  //   // dispatch({
-  //   //   type: "SETTING_RECOVERIES_STATE",
-  //   //   payload: "No data",
-  //   // });
-  // }
-  // console.log("settingUpRecoveredValue3:", settingUpRecoveredValue);
-  // console.log("globalState.recoveredValue-4", globalState.recoveredValue);
   return (
     <div className={styles.container}>
       <Typography gutterBottom variant="h4" component="h2">
