@@ -33,3 +33,9 @@ body {
   background-color: orange;
   opacity: 0.75;
 }
+
+.divConvert5 {
+  @include styleDefault;
+  background-color: lightseagreen;
+  opacity: 0.75;
+}

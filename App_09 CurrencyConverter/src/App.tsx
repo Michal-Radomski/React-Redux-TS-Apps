@@ -19,6 +19,9 @@ import {StoreProvider} from "./ReactHooks/Store";
 import CurrencyConverter4 from "./ReduxToolkit/CurrencyConverter4";
 import {Store} from "./ReduxToolkit/Store";
 
+// Pure Redux (only Redux -> no React-Redux library) -> import
+import CurrencyConverter5 from "./reduxOnly/CurrencyConverter5";
+
 // Redux-Store + Redux DevTools -> Setting Up
 declare global {
   interface Window {
@@ -42,6 +45,7 @@ function App(): JSX.Element {
       </StoreProvider>
       <Provider store={Store}>
         <CurrencyConverter4 />
+        <CurrencyConverter5 />
       </Provider>
     </React.Fragment>
   );

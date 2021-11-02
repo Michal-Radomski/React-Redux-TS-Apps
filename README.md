@@ -38,7 +38,9 @@ Applications written in **TS using React and Redux**:
    Redux-React App to React useContext/useReducer Hooks is written according to this
    [tutorial](https://www.freecodecamp.org/news/how-to-convert-from-react-redux-classes-to-react-hooks-the-easy-way-eca2233e0e7a/).
    Migration to Redux Toolkit is written according to this
-   [tutorial](https://hackernoon.com/moving-from-react-redux-to-reduxjstoolkit-55133u3c). Migration JS->TS like above.
+   [tutorial](https://hackernoon.com/moving-from-react-redux-to-reduxjstoolkit-55133u3c). Migration JS->TS like above. Pure
+   Redux part of the App (no React-Redux library) is written according to this
+   [tutorial](https://blog.logrocket.com/why-use-redux-reasons-with-clear-examples-d21bffd5835/#statemanagement).
 
 10. App_10 (React+Redux+TS) is written according to this [tutorial](https://www.youtube.com/watch?v=UsL46JwBZwk), migration
     JS->TS like above. The API key is not hosted on [github.com](https://github.com/). The data is retrieved from
