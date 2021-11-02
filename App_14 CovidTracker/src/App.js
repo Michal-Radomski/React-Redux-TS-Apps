@@ -10,7 +10,7 @@ import styles from "./App.module.scss";
 import {Cards, Chart, CountryPicker} from "./components/index";
 
 // import {fetchData} from "./api/index"; //+ No Redux Version
-import {fetchDataGlobal} from "./redux/actions"; // - Redux Version
+import {fetchDataGlobal, setRecoveredValue} from "./redux/actions"; // - Redux Version
 import covidImage from "./images/image.png";
 
 class App extends React.Component {
@@ -27,6 +27,16 @@ class App extends React.Component {
     // const valueRecovered = fetchedData.recovered.value !== 0 ? fetchedData.recovered.value : "No Data";
     // console.log(valueRecovered);
     // this.setState({data: fetchedData, recoveredValue: valueRecovered});
+
+    if (!this.props.data.recovered) {
+      return "loading...";
+    }
+    const settingUpRecoveredValue = this.props.data.recovered.value;
+    console.log("settingUpRecoveredValue:", settingUpRecoveredValue);
+    if (settingUpRecoveredValue === 0) {
+      this.props.setRecoveredValue();
+    }
+    console.log(this.props.recoveredValue);
   }
 
   // + No Redux Version
@@ -37,6 +47,8 @@ class App extends React.Component {
   //   this.setState({data: fetchedDataCountry, selectedCountry: country});
   //   console.log(this.state);
   // };
+
+  async componentDidUpdate() {}
 
   render() {
     return (
@@ -63,8 +75,8 @@ const mapStateToProps = (props) => ({
     deaths: props.data.deaths,
     lastUpdate: props.data.lastUpdate,
   },
-  recoveredValue: "",
+  recoveredValue: props.recoveredValue,
   selectedCountry: "",
 });
 
-export default connect(mapStateToProps, {fetchDataGlobal})(App);
+export default connect(mapStateToProps, {fetchDataGlobal, setRecoveredValue})(App);

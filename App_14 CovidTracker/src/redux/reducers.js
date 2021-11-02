@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 
-import {FETCH_DATA_GLOBAL, SELECT_COUNTRY, FETCH_DATA_GLOBAL_COUNTRY} from "./actions";
+import {FETCH_DATA_GLOBAL, SELECT_COUNTRY, FETCH_DATA_GLOBAL_COUNTRY, SETTING_RECOVERIES_STATE} from "./actions";
 
 // Initial Global State
 const initialState = {
@@ -18,6 +18,8 @@ const fetchDataGlobalReducer = (state = initialState, action) => {
       return {...state, data: action.payload};
     case SELECT_COUNTRY:
       return {...state, selectedCountry: action.payload};
+    case SETTING_RECOVERIES_STATE:
+      return {...state, recoveredValue: action.payload};
     default:
       return state;
   }

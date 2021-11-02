@@ -4,6 +4,7 @@ import axios from "axios";
 export const FETCH_DATA_GLOBAL = "FETCH_DATA_GLOBAL";
 export const SELECT_COUNTRY = "SELECT_COUNTRY";
 export const FETCH_DATA_GLOBAL_COUNTRY = "FETCH_DATA_GLOBAL_COUNTRY";
+export const SETTING_RECOVERIES_STATE = "SETTING_RECOVERIES_STATE";
 
 const url = "https://covid19.mathdro.id/api";
 
@@ -58,5 +59,17 @@ export const fetchDataGlobalCountry = (country) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+};
+
+const x = "No Data";
+
+// Action for setting up recoveredValue
+export const setRecoveredValue = () => {
+  return function (dispatch) {
+    dispatch({
+      type: "SETTING_RECOVERIES_STATE",
+      payload: {recoveredValue: x},
+    });
   };
 };
