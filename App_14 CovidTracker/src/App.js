@@ -14,7 +14,7 @@ import {fetchDataGlobal} from "./redux/actions"; // - Redux Version
 import covidImage from "./images/image.png";
 
 class App extends React.Component {
-  state = {data: {}, recoveredValue: undefined, selectedCountry: ""}; //+ No Redux Version
+  // state = {data: {}, recoveredValue: undefined, selectedCountry: ""}; //+ No Redux Version
 
   async componentDidMount() {
     // - Redux Version
@@ -45,11 +45,12 @@ class App extends React.Component {
         {/* // - Redux Version */}
         <Cards />
         <CountryPicker />
+        <Chart />
 
         {/* // + No Redux Version */}
         {/* <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} country={this.state.selectedCountry} /> */}
         {/* <CountryPicker handleCountryChange={this.handleCountryChange} /> */}
-        <Chart data={this.state.data} country={this.state.selectedCountry} />
+        {/* <Chart data={this.state.data} country={this.state.selectedCountry} /> */}
       </div>
     );
   }
