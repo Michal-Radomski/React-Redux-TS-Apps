@@ -30,7 +30,6 @@ const CountryPicker = () => {
     // setCountry(event.target.value);
     // dispatch({type: SELECT_COUNTRY, payload: event.target.value});
     console.log("country:", country);
-
     dispatch(fetchDataGlobalCountry(country));
   };
 

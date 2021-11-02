@@ -43,6 +43,9 @@ export const fetchDataGlobalCountry = (country) => {
     // console.log("country-action:", country);
 
     let changeableUrl = `${url}/countries/${country}`;
+    if (!country) {
+      changeableUrl = url;
+    }
 
     console.log("changeableUrl:", changeableUrl);
 

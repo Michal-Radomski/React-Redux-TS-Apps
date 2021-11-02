@@ -18,7 +18,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     // - Redux Version
-    console.log("this.props-App:", this.props);
+    // console.log("this.props-App:", this.props);
     this.props.fetchDataGlobal();
 
     // + No Redux Version
@@ -42,26 +42,26 @@ class App extends React.Component {
     return (
       <div className={styles.container}>
         <img className={styles.image} src={covidImage} alt="COVID-19" />
-        {/* // + No Redux Version */}
-        {/* <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} country={this.state.selectedCountry} /> */}
         {/* // - Redux Version */}
         <Cards />
-        <Chart data={this.state.data} country={this.state.selectedCountry} />
-        {/* // + No Redux Version */}
-        {/* <CountryPicker handleCountryChange={this.handleCountryChange} /> */}
-        {/* // - Redux Version */}
         <CountryPicker />
+
+        {/* // + No Redux Version */}
+        {/* <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} country={this.state.selectedCountry} /> */}
+        {/* <CountryPicker handleCountryChange={this.handleCountryChange} /> */}
+        <Chart data={this.state.data} country={this.state.selectedCountry} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (props) => ({
-  confirmed: props.data.confirmed,
-  recovered: props.data.recovered,
-  deaths: props.data.deaths,
-  lastUpdate: props.data.lastUpdate,
-
+  data: {
+    confirmed: props.data.confirmed,
+    recovered: props.data.recovered,
+    deaths: props.data.deaths,
+    lastUpdate: props.data.lastUpdate,
+  },
   recoveredValue: "",
   selectedCountry: "",
 });

@@ -40,6 +40,7 @@ const url = "https://covid19.mathdro.id/api";
 //   }
 // };
 
+//+ No Redux Version -> fetchDailyData in not in global redux state
 export const fetchDailyData = async () => {
   try {
     const {data} = await axios.get(`${url}/daily`);
@@ -56,6 +57,7 @@ export const fetchDailyData = async () => {
   }
 };
 
+//+ No Redux Version -> fetchCountries not in global redux state
 export const fetchCountries = async () => {
   try {
     const {
