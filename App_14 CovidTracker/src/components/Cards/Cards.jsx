@@ -2,9 +2,11 @@ import React from "react";
 import {Card, CardContent, Typography, Grid} from "@material-ui/core";
 import CountUp from "react-countup";
 import cx from "classnames";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
 import styles from "./Cards.module.scss";
+import {setRecoveredValue} from "../../redux/actions";
+import store from "../../redux/store";
 
 //+ No Redux Version
 // const Cards = ({data: {confirmed, recovered, deaths, lastUpdate}, recoveredValue, country}) => {
@@ -17,7 +19,21 @@ import styles from "./Cards.module.scss";
 //- Redux Version
 const Cards = () => {
   const globalState = useSelector((state) => state.data);
-  // console.log("globalState-Cards:", globalState);
+  console.log("globalState-Cards:", globalState);
+
+  const dispatch = useDispatch();
+  const xxx = store.getState().data.data.recovered.value;
+  console.log("xxx:", xxx);
+  React.useEffect(() => {
+    console.log("store.getState():", store.getState());
+    // if (!store.getState().data.data.recovered) {
+    //   return null;
+    // }
+
+    if (xxx === 0 || undefined) {
+      store.dispatch(setRecoveredValue("No Data"));
+    }
+  }, [xxx]);
 
   if (
     !globalState.data.confirmed ||
@@ -28,6 +44,19 @@ const Cards = () => {
     return "Loading...";
   }
 
+  // const settingUpRecoveredValue = globalState.data.recovered.value;
+  // console.log("settingUpRecoveredValue1:", settingUpRecoveredValue);
+
+  // if (settingUpRecoveredValue === 0) {
+  //   console.log("settingUpRecoveredValue2:", settingUpRecoveredValue);
+  //   setRecoveredValue();
+  //   // dispatch({
+  //   //   type: "SETTING_RECOVERIES_STATE",
+  //   //   payload: "No data",
+  //   // });
+  // }
+  // console.log("settingUpRecoveredValue3:", settingUpRecoveredValue);
+  // console.log("globalState.recoveredValue-4", globalState.recoveredValue);
   return (
     <div className={styles.container}>
       <Typography gutterBottom variant="h4" component="h2">
@@ -52,7 +81,7 @@ const Cards = () => {
               Recovered
             </Typography>
             <Typography variant="h5">
-              {globalState.data.recoveredValue}
+              {globalState.recoveredValue}
               {/* <CountUp start={0} end={recovered.value} duration={2.5} separator=" " /> */}
             </Typography>
             <Typography color="textSecondary">{new Date(globalState.data.lastUpdate).toDateString()}</Typography>

@@ -62,14 +62,26 @@ export const fetchDataGlobalCountry = (country) => {
   };
 };
 
-const x = "No Data";
-
 // Action for setting up recoveredValue
-export const setRecoveredValue = () => {
-  return function (dispatch) {
-    dispatch({
-      type: "SETTING_RECOVERIES_STATE",
-      payload: {recoveredValue: x},
-    });
+// export const setRecoveredValue = () => {
+//   return function (dispatch) {
+//     console.log("tst");
+//     dispatch({
+//       type: "SETTING_RECOVERIES_STATE",
+//       payload: "No Data",
+//     });
+//   };
+// };
+// export const setRecoveredValue = () => (dispatch) => {
+//   dispatch({
+//     type: SETTING_RECOVERIES_STATE,
+//     payload: "No Data",
+//   });
+// };
+
+export const setRecoveredValue = (noData) => {
+  return {
+    type: "SETTING_RECOVERIES_STATE",
+    payload: noData,
   };
 };

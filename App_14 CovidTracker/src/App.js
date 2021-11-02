@@ -27,16 +27,6 @@ class App extends React.Component {
     // const valueRecovered = fetchedData.recovered.value !== 0 ? fetchedData.recovered.value : "No Data";
     // console.log(valueRecovered);
     // this.setState({data: fetchedData, recoveredValue: valueRecovered});
-
-    if (!this.props.data.recovered) {
-      return "loading...";
-    }
-    const settingUpRecoveredValue = this.props.data.recovered.value;
-    console.log("settingUpRecoveredValue:", settingUpRecoveredValue);
-    if (settingUpRecoveredValue === 0) {
-      this.props.setRecoveredValue();
-    }
-    console.log(this.props.recoveredValue);
   }
 
   // + No Redux Version
@@ -48,7 +38,17 @@ class App extends React.Component {
   //   console.log(this.state);
   // };
 
-  async componentDidUpdate() {}
+  async componentDidUpdate() {
+    if (!this.props.data.recovered) {
+      return "loading...";
+    }
+    const settingUpRecoveredValue = this.props.data.recovered.value;
+    console.log("settingUpRecoveredValue:", settingUpRecoveredValue);
+    if (settingUpRecoveredValue === 0) {
+      this.props.setRecoveredValue();
+    }
+    console.log(this.props.recoveredValue);
+  }
 
   render() {
     return (
