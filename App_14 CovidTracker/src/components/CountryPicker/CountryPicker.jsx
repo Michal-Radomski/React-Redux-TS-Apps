@@ -1,22 +1,20 @@
 import React from "react";
 import {NativeSelect, FormControl} from "@material-ui/core";
+// eslint-disable-next-line no-unused-vars
 import {useSelector, useDispatch} from "react-redux";
 
 import {fetchCountries} from "../../api";
 import styles from "./CountryPicker.module.scss";
-import {SELECT_COUNTRY, fetchDataGlobal, fetchDataGlobalCountry} from "../../redux/actions";
+import {SELECT_COUNTRY, fetchDataGlobalCountry} from "../../redux/actions";
 
 //- Redux Version
 const CountryPicker = () => {
   const [fetchedCountries, setFetchedCountries] = React.useState([]);
-  // const [country, setCountry] = React.useState("");
 
-  // console.log("country:", country);
-
-  const globalState = useSelector((state) => state);
-  console.log("globalState-CountryPicker:", globalState.data);
-  fetchDataGlobal(globalState.selectedCountry);
   const dispatch = useDispatch();
+  // Unnecessary - only form reading the Global State
+  // const globalState = useSelector((state) => state);
+  // console.log("globalState-CountryPicker:", globalState.data);
 
   React.useEffect(() => {
     const fetchAPI = async () => {
@@ -24,12 +22,9 @@ const CountryPicker = () => {
     };
     fetchAPI();
   }, []);
-  // console.log(fetchedCountries);
 
   const handleChange = async (country) => {
-    // setCountry(event.target.value);
-    // dispatch({type: SELECT_COUNTRY, payload: event.target.value});
-    console.log("country:", country);
+    // console.log("onChange country:", country);
     dispatch(fetchDataGlobalCountry(country));
   };
 
@@ -39,8 +34,7 @@ const CountryPicker = () => {
         defaultValue=""
         onChange={(event) => {
           dispatch({type: SELECT_COUNTRY, payload: event.target.value});
-          // setCountry(event.target.value);
-          console.log("event.target.value:", event.target.value);
+          // console.log("event.target.value:", event.target.value);
           handleChange(event.target.value);
         }}
       >
@@ -68,7 +62,7 @@ export default CountryPicker;
 //     };
 //     fetchAPI();
 //   }, []);
-//   // console.log(fetchedCountries);
+//   // console.log("fetchedCountries:", fetchedCountries);
 
 //   return (
 //     <FormControl className={styles.formControl}>
