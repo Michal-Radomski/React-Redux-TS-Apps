@@ -45,8 +45,8 @@ function App(): JSX.Element {
       </StoreProvider>
       <Provider store={Store}>
         <CurrencyConverter4 />
-        <CurrencyConverter5 />
       </Provider>
+      <CurrencyConverter5 />
     </React.Fragment>
   );
 }

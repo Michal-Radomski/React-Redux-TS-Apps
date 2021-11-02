@@ -1,41 +1,21 @@
 import React from "react";
-import axios from "axios";
-import {useSelector, useDispatch} from "react-redux";
-import {setFirstCurrency4_G, setSecondCurrency4_G, setRate4_G} from "../ReduxToolkit/currencySlice";
 
-const API_KEY: ProcessEnv = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
+import {getRates5, setCurrency1_5, setCurrency2_5} from "./action";
+import reduxStore from "./reduxStore";
 
 const CurrencyConverter5 = (): JSX.Element => {
-  const Currencies = useSelector((state: RootState) => state.currencies);
-  const dispatch: Dispatch = useDispatch();
-  // console.log("Currencies, dispatch:", Currencies, dispatch);
+  const globalState: State_5 = reduxStore.getState().currencies5;
+  console.log(globalState);
 
-  const [firstCurrency4, setFirstCurrency4] = React.useState(Currencies.firstCurrency4_G);
-  const [secondCurrency4, setSecondCurrency4] = React.useState(Currencies.secondCurrency4_G);
-  // console.log("Local State: ", firstCurrency4, secondCurrency4);
-
-  const getRate4 = (firstCurrency4: string, secondCurrency4: string) => {
-    //- for testing purposes only
-    // dispatch(setRate4_G(0.5));
-    axios({
-      method: "GET",
-      url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency4}_${secondCurrency4}&compact=ultra`,
-    })
-      .then((response: Fetch) => {
-        let responseRate = response.data[`${firstCurrency4}_${secondCurrency4}`];
-        responseRate = responseRate.toFixed(3);
-        dispatch(setRate4_G(responseRate));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const [firstCurrency5Local, setFirstCurrency5Local] = React.useState(globalState.firstCurrency5);
+  const [secondCurrency5Local, setSecondCurrency5Local] = React.useState(globalState.secondCurrency5);
+  console.log("Local State: ", firstCurrency5Local, secondCurrency5Local);
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    dispatch(setFirstCurrency4_G(firstCurrency4));
-    dispatch(setSecondCurrency4_G(secondCurrency4));
-    getRate4(firstCurrency4, secondCurrency4);
+    reduxStore.dispatch(setCurrency1_5(firstCurrency5Local));
+    reduxStore.dispatch(setCurrency2_5(secondCurrency5Local));
+    // reduxStore.dispatch(getRates5(firstCurrency5Local, secondCurrency5Local));
   };
 
   return (
@@ -46,21 +26,21 @@ const CurrencyConverter5 = (): JSX.Element => {
       <div className="divConvert5">
         <input
           type="text"
-          onChange={(event) => setFirstCurrency4(event.target.value.toUpperCase())}
-          value={firstCurrency4}
+          onChange={(event) => setFirstCurrency5Local(event.target.value.toUpperCase())}
+          value={firstCurrency5Local}
         />
         <input
           type="text"
-          onChange={(event) => setSecondCurrency4(event.target.value.toUpperCase())}
-          value={secondCurrency4}
+          onChange={(event) => setSecondCurrency5Local(event.target.value.toUpperCase())}
+          value={secondCurrency5Local}
         />
         <button type="button" onClick={handleSubmit}>
           Convert
         </button>
       </div>
       <div className="divConvert5">
-        1{Currencies.firstCurrency4_G}={Currencies.rate4_G}
-        {Currencies.secondCurrency4_G}
+        1{globalState.firstCurrency5}={globalState.rate5}
+        {globalState.secondCurrency5}
       </div>
     </React.Fragment>
   );

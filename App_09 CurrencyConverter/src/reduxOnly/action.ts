@@ -8,25 +8,25 @@ export const SET_RATE_5 = "SET_RATE_5";
 export const SET_CURRENCY1_5 = "SET_CURRENCY1_5";
 export const SET_CURRENCY2_5 = "SET_CURRENCY2_5";
 
-// Action Creator getRates()
-export const getRates = (firstCurrency5: string, secondCurrency5: string) => {
+// Action Creator getRates5()
+export const getRates5: any = (firstCurrency5: string, secondCurrency5: string) => {
   return async function (getState: Fetch) {
     // - For testing purposes only
-    // return{type: SET_RATE_5, payload: 0.5};
-    await getState(
-      axios({
-        method: "GET",
-        url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency5}_${secondCurrency5}&compact=ultra`,
-      })
-        .then((response: Fetch) => {
-          let responseRate = response.data[`${firstCurrency5}_${secondCurrency5}`];
-          responseRate = responseRate.toFixed(3);
-          return {type: SET_RATE_5, payload: responseRate};
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-    );
+    return {type: SET_RATE_5, payload: 0.5};
+    // await getState(
+    //   axios({
+    //     method: "GET",
+    //     url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency5}_${secondCurrency5}&compact=ultra`,
+    //   })
+    //     .then((response: Fetch) => {
+    //       let responseRate = response.data[`${firstCurrency5}_${secondCurrency5}`];
+    //       responseRate = responseRate.toFixed(3);
+    //       return {type: SET_RATE_5, payload: responseRate};
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     })
+    // );
   };
 };
 
