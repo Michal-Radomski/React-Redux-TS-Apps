@@ -28,7 +28,7 @@ class CurrencyConverter2 extends React.Component<Props, State | RootState> {
       <React.Fragment>
         {/* {console.log("this.props.currencies.currencies:", this.props.currencies.currencies)} */}
         <div className="divConvert2">
-          <h3>Simple Currency Converter - Redux Store</h3>
+          <h3>Simple Currency Converter - React-Redux Store</h3>
         </div>
         <div className="divConvert2">
           <input

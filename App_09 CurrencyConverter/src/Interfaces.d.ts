@@ -38,3 +38,9 @@ interface State_4 {
   secondCurrency4_G: string;
   rate4_G: number;
 }
+
+interface State_5 {
+  firstCurrency5: string;
+  secondCurrency5: string;
+  rate5: number;
+}

@@ -7,7 +7,7 @@ import "./App.scss";
 
 import CurrencyConverter from "./CurrencyConverter";
 
-// Redux-Store -> import
+// React-Redux-Store -> import
 import CurrencyConverter2 from "./CurrencyConverter2";
 import rootReducer from "./redux/reducer";
 
@@ -22,7 +22,7 @@ import {Store} from "./ReduxToolkit/Store";
 // Pure Redux (only Redux -> no React-Redux library) -> import
 import CurrencyConverter5 from "./reduxOnly/CurrencyConverter5";
 
-// Redux-Store + Redux DevTools -> Setting Up
+// React-Redux Store + Redux DevTools -> Setting Up
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;

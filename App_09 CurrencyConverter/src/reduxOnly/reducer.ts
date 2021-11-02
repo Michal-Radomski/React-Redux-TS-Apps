@@ -1,24 +1,23 @@
 import {combineReducers} from "redux";
 
-import {SET_RATE, SET_CURRENCY1, SET_CURRENCY2} from "./action";
+import {SET_RATE_5, SET_CURRENCY1_5, SET_CURRENCY2_5} from "./action";
 
-// Initial Global State
-const initialState: State = {
-  firstCurrency2: "USD",
-  secondCurrency2: "USD",
-  rate2: 1,
+// Initial Global State -> Pure Redux
+const initialState: State_5 = {
+  firstCurrency5: "AUD",
+  secondCurrency5: "AUD",
+  rate5: 1,
 };
 
 // Reducer (Reducer/currencyReducer.js)
 const currencyReducer = (state = initialState, action: Action) => {
-  // console.log(`Action Received: ${action}`, action, state);
   switch (action.type) {
-    case SET_RATE:
-      return {...state, rate2: action.payload};
-    case SET_CURRENCY1:
-      return {...state, firstCurrency2: action.payload};
-    case SET_CURRENCY2:
-      return {...state, secondCurrency2: action.payload};
+    case SET_RATE_5:
+      return {...state, rate5: action.payload};
+    case SET_CURRENCY1_5:
+      return {...state, firstCurrency5: action.payload};
+    case SET_CURRENCY2_5:
+      return {...state, secondCurrency5: action.payload};
     default:
       return state;
   }
@@ -26,7 +25,7 @@ const currencyReducer = (state = initialState, action: Action) => {
 
 // CombineReducer (Reducer/index.js)
 const rootReducer = combineReducers({
-  currencies: currencyReducer,
+  currencies5: currencyReducer,
 });
 
 export default rootReducer;
