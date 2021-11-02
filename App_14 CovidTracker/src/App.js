@@ -44,13 +44,13 @@ class App extends React.Component {
         <img className={styles.image} src={covidImage} alt="COVID-19" />
         {/* // - Redux Version */}
         <Cards />
-        <CountryPicker />
         <Chart />
+        <CountryPicker />
 
         {/* // + No Redux Version */}
         {/* <Cards data={this.state.data} recoveredValue={this.state.recoveredValue} country={this.state.selectedCountry} /> */}
-        {/* <CountryPicker handleCountryChange={this.handleCountryChange} /> */}
         {/* <Chart data={this.state.data} country={this.state.selectedCountry} /> */}
+        {/* <CountryPicker handleCountryChange={this.handleCountryChange} /> */}
       </div>
     );
   }
