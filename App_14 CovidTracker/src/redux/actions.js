@@ -7,18 +7,12 @@ export const FETCH_DATA_GLOBAL_COUNTRY = "FETCH_DATA_GLOBAL_COUNTRY";
 
 const url = "https://covid19.mathdro.id/api";
 
-// Action creator FetchData()
-export const fetchDataGlobal = (country) => {
-  // console.log("country-action:", country);
-  let changeableUrl = url;
-  if (country) {
-    changeableUrl = `${url}/countries/${country}`;
-  }
-  // console.log("changeableUrl:", changeableUrl);
+// Action creator FetchData() - initial data fetching
+export const fetchDataGlobal = () => {
+  // console.log("url:", url);
   return async function (dispatch) {
-    // console.log("dispatch;", dispatch);
     await axios
-      .get(changeableUrl)
+      .get(url)
       .then((response) => {
         let responseData = response.data;
         // console.log("responseData:", responseData);
@@ -38,22 +32,19 @@ export const fetchDataGlobal = (country) => {
   };
 };
 
+// Action creator fetchDataGlobalCountry - fetching data for a country
 export const fetchDataGlobalCountry = (country) => {
   return async function (dispatch) {
-    // console.log("country-action:", country);
-
+    // console.log("country-from action:", country);
     let changeableUrl = `${url}/countries/${country}`;
     if (!country) {
       changeableUrl = url;
     }
-
-    console.log("changeableUrl:", changeableUrl);
-
-    // console.log("dispatch;", dispatch);
+    // console.log("changeableUrl:", changeableUrl);
     await fetch(changeableUrl)
       .then((response) => response.json())
       .then((response) => {
-        console.log("response:", response);
+        // console.log("response-from action:", response);
         dispatch({
           type: "FETCH_DATA_GLOBAL_COUNTRY",
           payload: {
