@@ -1,14 +1,14 @@
 import React from "react";
 import {NativeSelect, FormControl} from "@material-ui/core";
-// eslint-disable-next-line no-unused-vars
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
+// import {useSelector} from "react-redux" //-Unnecessary - only form reading the Global State
 
 import {fetchCountries} from "../../api";
 import styles from "./CountryPicker.module.scss";
 import {SELECT_COUNTRY, fetchDataGlobalCountry} from "../../redux/actions";
 
 //- Redux Version
-const CountryPicker = () => {
+const CountryPicker = (): JSX.Element => {
   const [fetchedCountries, setFetchedCountries] = React.useState([]);
 
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const CountryPicker = () => {
     fetchAPI();
   }, []);
 
-  const handleChange = async (country) => {
+  const handleChange = async (country: string) => {
     // console.log("onChange country:", country);
     dispatch(fetchDataGlobalCountry(country));
   };

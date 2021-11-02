@@ -13,7 +13,7 @@ import {Cards, Chart, CountryPicker} from "./components/index";
 import {fetchDataGlobal} from "./redux/actions"; // - Redux Version
 import covidImage from "./images/image.png";
 
-class App extends React.Component {
+class App extends React.Component<{fetchDataGlobal: Fetch}, State> {
   // state = {data: {}, recoveredValue: undefined, selectedCountry: ""}; //+ No Redux Version
 
   async componentDidMount() {
@@ -56,7 +56,7 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (props) => ({
+const mapStateToProps = (props: State) => ({
   data: {
     confirmed: props.data.confirmed,
     recovered: props.data.recovered,

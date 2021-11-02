@@ -6,12 +6,12 @@ export const SELECT_COUNTRY = "SELECT_COUNTRY";
 export const FETCH_DATA_GLOBAL_COUNTRY = "FETCH_DATA_GLOBAL_COUNTRY";
 export const SETTING_RECOVERIES_STATE = "SETTING_RECOVERIES_STATE";
 
-const url = "https://covid19.mathdro.id/api";
+const url: string = "https://covid19.mathdro.id/api";
 
 // Action creator FetchData() - initial data fetching
 export const fetchDataGlobal = () => {
   // console.log("url:", url);
-  return async function (dispatch) {
+  return async function (dispatch: Dispatch) {
     await axios
       .get(url)
       .then((response) => {
@@ -34,10 +34,10 @@ export const fetchDataGlobal = () => {
 };
 
 // Action creator fetchDataGlobalCountry - fetching data for a country
-export const fetchDataGlobalCountry = (country) => {
-  return async function (dispatch) {
+export const fetchDataGlobalCountry = (country: string) => {
+  return async function (dispatch: Dispatch) {
     // console.log("country-from action:", country);
-    let changeableUrl = `${url}/countries/${country}`;
+    let changeableUrl: string = `${url}/countries/${country}`;
     if (!country) {
       changeableUrl = url;
     }
@@ -62,7 +62,7 @@ export const fetchDataGlobalCountry = (country) => {
   };
 };
 
-export const setRecoveredValue = (noData) => {
+export const setRecoveredValue = (noData: string) => {
   return {
     type: "SETTING_RECOVERIES_STATE",
     payload: noData,

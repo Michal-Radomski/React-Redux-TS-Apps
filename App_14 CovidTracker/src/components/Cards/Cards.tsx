@@ -16,8 +16,8 @@ import {setRecoveredValue} from "../../redux/actions";
 //   // console.log(country);
 
 //- Redux Version
-const Cards = () => {
-  const globalState = useSelector((state) => state.data);
+const Cards = (): JSX.Element => {
+  const globalState: State = useSelector((state: RootState) => state.data);
   // console.log("globalState-Cards:", globalState);
 
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Cards = () => {
     !globalState.data.lastUpdate ||
     !globalState.data.deaths
   ) {
-    return "Loading...";
+    return <React.Fragment>"Loading...";</React.Fragment>;
   }
 
   return (

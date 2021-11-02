@@ -6,7 +6,7 @@ import {fetchDailyData} from "../../api"; // fetchDailyData in not in global sta
 import styles from "./Chart.module.scss";
 
 // - Redux Version */
-const Chart = () => {
+const Chart = (): JSX.Element => {
   const [dailyData, setDailyData] = React.useState([]);
 
   React.useEffect(() => {
@@ -42,7 +42,7 @@ const Chart = () => {
       />
     ) : null;
 
-  const globalState = useSelector((state) => state.data);
+  const globalState: State = useSelector((state: RootState) => state.data);
   // console.log("globalState-Charts:", globalState);
 
   const barChart = globalState.data.confirmed ? (
@@ -51,7 +51,6 @@ const Chart = () => {
         labels: ["Infected", globalState.data.recovered.value === 0 ? "Recovered: No Data" : "Recovered", "Deaths"],
         datasets: [
           {
-            label: ["Infected", "Recovered", "Deaths"],
             backgroundColor: ["rgba(0, 0, 255, 0.5)", "rgba(0, 255, 0, 0.5)", "rgba(255, 0, 0, 0.5)"],
             data: [globalState.data.confirmed.value, globalState.data.recovered.value, globalState.data.deaths.value],
           },

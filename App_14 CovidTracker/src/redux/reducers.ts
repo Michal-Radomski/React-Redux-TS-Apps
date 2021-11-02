@@ -3,14 +3,14 @@ import {combineReducers} from "redux";
 import {FETCH_DATA_GLOBAL, SELECT_COUNTRY, FETCH_DATA_GLOBAL_COUNTRY, SETTING_RECOVERIES_STATE} from "./actions";
 
 // Initial Global State
-const initialState = {
-  data: {confirmed: {}, recovered: {}, deaths: {}, lastUpdate: ""},
+const initialState: State = {
+  data: {confirmed: {value: 0}, recovered: {}, deaths: {value: 0}, lastUpdate: ""},
   recoveredValue: "",
   selectedCountry: "",
 };
 
 // Reducer for fetchDataGlobal
-const fetchDataGlobalReducer = (state = initialState, action) => {
+const fetchDataGlobalReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case FETCH_DATA_GLOBAL:
       return {...state, data: action.payload};

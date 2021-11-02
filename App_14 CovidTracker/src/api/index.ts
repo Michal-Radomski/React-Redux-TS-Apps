@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://covid19.mathdro.id/api";
+const url: string = "https://covid19.mathdro.id/api";
 
 //+ Previous version of the function (No Redux version)
 // export const fetchData = async () => {
@@ -43,10 +43,10 @@ const url = "https://covid19.mathdro.id/api";
 //+ No Redux Version -> fetchDailyData in not in global redux state
 export const fetchDailyData = async () => {
   try {
-    const {data} = await axios.get(`${url}/daily`);
+    const {data}: Fetch = await axios.get(`${url}/daily`);
     // console.log(data);
     // return data;
-    const modifiedData = data.map(({confirmed, deaths, reportDate: date}) => ({
+    const modifiedData = data.map(({confirmed, deaths, reportDate: date}: ModifiedData) => ({
       confirmed: confirmed.total,
       deaths: deaths.total,
       date: date,
@@ -64,7 +64,7 @@ export const fetchCountries = async () => {
       data: {countries},
     } = await axios.get(`${url}/countries`);
 
-    return countries.map((country) => country.name);
+    return countries.map((country: {name: string}) => country.name);
   } catch (error) {
     console.log(error);
   }
