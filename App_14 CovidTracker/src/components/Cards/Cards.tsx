@@ -18,11 +18,11 @@ import {setRecoveredValue} from "../../redux/actions";
 //- Redux Version
 const Cards = () => {
   const globalState = useSelector((state) => state.data);
-  console.log("globalState-Cards:", globalState);
+  // console.log("globalState-Cards:", globalState);
 
   const dispatch = useDispatch();
   const globalStateRecoveredValue = globalState.data.recovered.value;
-  console.log("globalStateRecoveredValue:", globalStateRecoveredValue);
+  // console.log("globalStateRecoveredValue:", globalStateRecoveredValue);
 
   React.useEffect(() => {
     if (globalStateRecoveredValue === 0 || !globalStateRecoveredValue) {
