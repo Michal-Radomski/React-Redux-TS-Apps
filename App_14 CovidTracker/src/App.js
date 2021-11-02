@@ -10,7 +10,7 @@ import styles from "./App.module.scss";
 import {Cards, Chart, CountryPicker} from "./components/index";
 
 // import {fetchData} from "./api/index"; //+ No Redux Version
-import {fetchDataGlobal, setRecoveredValue} from "./redux/actions"; // - Redux Version
+import {fetchDataGlobal} from "./redux/actions"; // - Redux Version
 import covidImage from "./images/image.png";
 
 class App extends React.Component {
@@ -37,18 +37,6 @@ class App extends React.Component {
   //   this.setState({data: fetchedDataCountry, selectedCountry: country});
   //   console.log(this.state);
   // };
-
-  async componentDidUpdate() {
-    if (!this.props.data.recovered) {
-      return "loading...";
-    }
-    const settingUpRecoveredValue = this.props.data.recovered.value;
-    console.log("settingUpRecoveredValue:", settingUpRecoveredValue);
-    if (settingUpRecoveredValue === 0) {
-      this.props.setRecoveredValue();
-    }
-    console.log(this.props.recoveredValue);
-  }
 
   render() {
     return (
@@ -79,4 +67,4 @@ const mapStateToProps = (props) => ({
   selectedCountry: "",
 });
 
-export default connect(mapStateToProps, {fetchDataGlobal, setRecoveredValue})(App);
+export default connect(mapStateToProps, {fetchDataGlobal})(App);

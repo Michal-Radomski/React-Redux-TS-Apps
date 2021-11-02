@@ -12,7 +12,7 @@ const CountryPicker = () => {
   const [fetchedCountries, setFetchedCountries] = React.useState([]);
 
   const dispatch = useDispatch();
-  // Unnecessary - only form reading the Global State
+  //-Unnecessary - only form reading the Global State
   // const globalState = useSelector((state) => state);
   // console.log("globalState-CountryPicker:", globalState.data);
 

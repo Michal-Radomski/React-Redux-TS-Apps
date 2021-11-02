@@ -32,8 +32,11 @@ const Cards = () => {
 
     if (xxx === 0 || undefined) {
       store.dispatch(setRecoveredValue("No Data"));
+      setTimeout(function () {
+        dispatch(setRecoveredValue("Data"));
+      }, 3000);
     }
-  }, [xxx]);
+  }, [dispatch, xxx]);
 
   if (
     !globalState.data.confirmed ||
