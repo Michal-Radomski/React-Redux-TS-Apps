@@ -11,23 +11,23 @@ export const SET_CURRENCY2_5 = "SET_CURRENCY2_5";
 // Action Creator getRates5()
 export const getRates5: Fetch = (firstCurrency5: string, secondCurrency5: string) => {
   // - For testing purposes only
-  return {type: SET_RATE_5, payload: 0.5};
-  // return async function (getState: Fetch) {
-  //   await getState(
-  //     axios({
-  //       method: "GET",
-  //       url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency5}_${secondCurrency5}&compact=ultra`,
-  //     })
-  //       .then((response: Fetch) => {
-  //         let responseRate = response.data[`${firstCurrency5}_${secondCurrency5}`];
-  //         responseRate = responseRate.toFixed(3);
-  //         return {type: SET_RATE_5, payload: responseRate};
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       })
-  //   );
-  // };
+  // return {type: SET_RATE_5, payload: 0.5};
+  return async function (getState: Fetch) {
+    await getState(
+      axios({
+        method: "GET",
+        url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency5}_${secondCurrency5}&compact=ultra`,
+      })
+        .then((response: Fetch) => {
+          let responseRate = response.data[`${firstCurrency5}_${secondCurrency5}`];
+          responseRate = responseRate.toFixed(3);
+          return {type: SET_RATE_5, payload: responseRate};
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    );
+  };
 };
 
 // Other Action Creators

@@ -4,23 +4,32 @@ import {getRates5, setCurrency1_5, setCurrency2_5} from "./action";
 import reduxStore from "./reduxStore";
 
 const CurrencyConverter5 = (): JSX.Element => {
-  function render() {}
-  render();
-  reduxStore.subscribe(render);
-
-  let globalState: State_5 = reduxStore.getState().currencies5;
+  const globalState: State_5 = reduxStore.getState().currencies5;
 
   const [firstCurrency5Local, setFirstCurrency5Local] = React.useState(globalState.firstCurrency5);
   const [secondCurrency5Local, setSecondCurrency5Local] = React.useState(globalState.secondCurrency5);
-  // console.log("Local State: ", firstCurrency5Local, secondCurrency5Local);
+  const [rate5Local, setRate5Local] = React.useState(globalState.rate5);
 
+  // console.log("Local State: ", firstCurrency5Local, secondCurrency5Local, rate5Local);
   // console.log("globalState:", globalState);
+
+  reduxStore.subscribe(render);
+  function render() {
+    const reduxStoreState: State_5 = reduxStore.getState().currencies5;
+    // console.log("reduxStoreState:", reduxStoreState);
+    setFirstCurrency5Local(reduxStoreState.firstCurrency5);
+    setSecondCurrency5Local(reduxStoreState.secondCurrency5);
+    setRate5Local(reduxStoreState.rate5);
+  }
 
   const handleSubmit: any = (event: React.SyntheticEvent) => {
     event.preventDefault();
     reduxStore.dispatch(setCurrency1_5(firstCurrency5Local));
     reduxStore.dispatch(setCurrency2_5(secondCurrency5Local));
     reduxStore.dispatch(getRates5(firstCurrency5Local, secondCurrency5Local));
+    setTimeout(function () {
+      render();
+    }, 300);
   };
 
   return (
@@ -44,8 +53,8 @@ const CurrencyConverter5 = (): JSX.Element => {
         </button>
       </div>
       <div className="divConvert5">
-        1{globalState.firstCurrency5}={globalState.rate5}
-        {globalState.secondCurrency5}
+        1{firstCurrency5Local}={rate5Local}
+        {secondCurrency5Local}
       </div>
     </React.Fragment>
   );
