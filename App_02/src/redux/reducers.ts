@@ -19,8 +19,8 @@ const reducers = (state = initialState, action: any) => {
   switch (action.type) {
     case ADD_TODO_FORM:
       return [...state, action.payload];
-    case SET_TODO_TASK:
-      return [...state, action.payload];
+    // case SET_TODO_TASK:
+    //   return [...state, action.payload];
     default:
       return state;
   }

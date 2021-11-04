@@ -19,8 +19,7 @@ function App() {
   const globalState = useSelector((state: any) => state.data);
   const [todos, setTodos] = React.useState(globalState);
 
-  console.log("globalState:", globalState);
-  console.log("todos, setTodos:", todos, setTodos);
+  // console.log("globalState:", globalState);
 
   const toggleTodo: ToggleTodo = (selectedTodo: Todo) => {
     const newTodos = todos.map((todo: Todo) => {
@@ -43,7 +42,7 @@ function App() {
   return (
     <React.Fragment>
       <ul>
-        <TodoList todo={todos} toggleTodo={toggleTodo} />
+        <TodoList todo={globalState} toggleTodo={toggleTodo} />
       </ul>
       <br />
       {/* <AddTodoForm addTodo={addTodo} /> */}
