@@ -43,7 +43,7 @@ const CurrencyConverter5 = (): JSX.Element => {
   return (
     <React.Fragment>
       <div className="divConvert5">
-        <h3>Simple Currency Converter - Redux Only</h3>
+        <h3>Simple Currency Converter - pure Redux only</h3>
       </div>
       <div className="divConvert5">
         <input
