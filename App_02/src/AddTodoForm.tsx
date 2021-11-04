@@ -1,9 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
+
 import {addTodoForm} from "./redux/actions";
 
 const AddTodoForm: React.FC<Props2> = (props: any): JSX.Element => {
-  console.log("props:", props);
+  // console.log("props:", props);
   const [text, setText] = React.useState("");
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {

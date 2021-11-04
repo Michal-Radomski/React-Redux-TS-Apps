@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./app.scss";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
@@ -42,7 +43,8 @@ function App() {
   return (
     <React.Fragment>
       <ul>
-        <TodoList todo={globalState} toggleTodo={toggleTodo} />
+        {/* <TodoList todo={globalState} toggleTodo={toggleTodo} /> */}
+        <TodoList toggleTodo={toggleTodo} />
       </ul>
       <br />
       {/* <AddTodoForm addTodo={addTodo} /> */}

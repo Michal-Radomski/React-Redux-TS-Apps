@@ -1,6 +1,7 @@
 import React from "react";
 
 const TodoListItem: React.FC<Props> = (props): JSX.Element => {
+  // console.log("props:", props);
   return (
     <div>
       <li>

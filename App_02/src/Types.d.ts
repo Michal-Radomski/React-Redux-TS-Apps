@@ -1,3 +1,7 @@
+type Dispatch = typeof store.dispatch;
+type Fetch = typeof store.fetch;
+type RootState = ReturnType<typeof store.getState>;
+
 interface Todo {
   text: string;
   complete: boolean;
@@ -6,7 +10,7 @@ interface Todo {
 type ToggleTodo = (selectedTodo: Todo) => void;
 
 interface Props {
-  todo: Todo | any;
+  todo?: Todo | any;
   toggleTodo: ToggleTodo;
 }
 
