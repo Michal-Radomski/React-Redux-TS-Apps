@@ -2,23 +2,28 @@ import React from "react";
 import "./app.scss";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
+import {useSelector} from "react-redux";
 
-const initialState: Todo[] = [
-  {
-    text: "Walk the dog",
-    complete: false,
-  },
-  {
-    text: "Write app",
-    complete: true,
-  },
-];
+// const initialState: Todo[] = [
+//   {
+//     text: "Walk the dog",
+//     complete: false,
+//   },
+//   {
+//     text: "Write app",
+//     complete: true,
+//   },
+// ];
 
 function App() {
-  const [todos, setTodos] = React.useState(initialState);
+  const globalState = useSelector((state: any) => state.data);
+  const [todos, setTodos] = React.useState(globalState);
+
+  console.log("globalState:", globalState);
+  console.log("todos, setTodos:", todos, setTodos);
 
   const toggleTodo: ToggleTodo = (selectedTodo: Todo) => {
-    const newTodos = todos.map((todo) => {
+    const newTodos = todos.map((todo: Todo) => {
       if (todo === selectedTodo) {
         return {
           ...todo,
@@ -30,10 +35,10 @@ function App() {
     setTodos(newTodos);
   };
 
-  const addTodo: AddTodo = (text: string) => {
-    const newTodo = {text, complete: false};
-    setTodos([...todos, newTodo]);
-  };
+  // const addTodo: AddTodo = (text: string) => {
+  //   const newTodo = {text, complete: false};
+  //   setTodos([...todos, newTodo]);
+  // };
 
   return (
     <React.Fragment>
@@ -41,7 +46,8 @@ function App() {
         <TodoList todo={todos} toggleTodo={toggleTodo} />
       </ul>
       <br />
-      <AddTodoForm addTodo={addTodo} />
+      {/* <AddTodoForm addTodo={addTodo} /> */}
+      <AddTodoForm />
     </React.Fragment>
   );
 }

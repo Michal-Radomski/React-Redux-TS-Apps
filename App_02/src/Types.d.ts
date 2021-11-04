@@ -13,5 +13,5 @@ interface Props {
 type AddTodo = (text: string) => void;
 
 interface Props2 {
-  addTodo: AddTodo;
+  addTodo?: AddTodo;
 }
