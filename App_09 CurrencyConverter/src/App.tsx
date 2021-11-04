@@ -22,21 +22,21 @@ import {Store} from "./ReduxToolkit/Store";
 // Pure Redux (only Redux -> no React-Redux library) -> import
 import CurrencyConverter5 from "./reduxOnly/CurrencyConverter5";
 
-// // React-Redux Store + Redux DevTools -> Setting Up
-// declare global {
-//   interface Window {
-//     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-//   }
-// }
+// React-Redux Store + Redux DevTools -> Setting Up
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
 
-// const middleware = [thunk];
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
+const middleware = [thunk];
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
 
 function App(): JSX.Element {
   return (
     <React.Fragment>
-      {/* <CurrencyConverter />
+      <CurrencyConverter />
       <Provider store={store}>
         <CurrencyConverter2 />
       </Provider>
@@ -45,7 +45,7 @@ function App(): JSX.Element {
       </StoreProvider>
       <Provider store={Store}>
         <CurrencyConverter4 />
-      </Provider> */}
+      </Provider>
       <CurrencyConverter5 />
     </React.Fragment>
   );
