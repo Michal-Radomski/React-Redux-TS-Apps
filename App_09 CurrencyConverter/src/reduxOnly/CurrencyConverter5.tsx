@@ -1,7 +1,11 @@
 import React from "react";
+import axios from "axios";
 
-import {getRates5, setCurrency1_5, setCurrency2_5} from "./action";
+import {setCurrency1_5, setCurrency2_5} from "./action";
 import reduxStore from "./reduxStore";
+
+// API key
+const API_KEY: ProcessEnv = process.env.REACT_APP_FreeCurrencyConverterAPI_KEY;
 
 const CurrencyConverter5 = (): JSX.Element => {
   const globalState: State_5 = reduxStore.getState().currencies5;
@@ -24,9 +28,15 @@ const CurrencyConverter5 = (): JSX.Element => {
 
   const handleSubmit: any = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    reduxStore.dispatch(setCurrency1_5(firstCurrency5Local));
-    reduxStore.dispatch(setCurrency2_5(secondCurrency5Local));
-    reduxStore.dispatch(getRates5(firstCurrency5Local, secondCurrency5Local));
+    getRates5(firstCurrency5Local, secondCurrency5Local);
+
+    setTimeout(function () {
+      reduxStore.dispatch(setCurrency1_5(firstCurrency5Local));
+      reduxStore.dispatch(setCurrency2_5(secondCurrency5Local));
+    }, 3000);
+
+    // reduxStore.dispatch(getRates5(firstCurrency5Local, secondCurrency5Local));
+
     setTimeout(function () {
       render();
     }, 300);
@@ -61,3 +71,20 @@ const CurrencyConverter5 = (): JSX.Element => {
 };
 
 export default CurrencyConverter5;
+
+// Function getRates5()
+const getRates5: Fetch = async (firstCurrency5: string, secondCurrency5: string) => {
+  await axios({
+    method: "GET",
+    url: `https://free.currconv.com/api/v7/convert?apiKey=${API_KEY}&q=${firstCurrency5}_${secondCurrency5}&compact=ultra`,
+  })
+    .then((response: Fetch) => {
+      let responseRate = response.data[`${firstCurrency5}_${secondCurrency5}`];
+      responseRate = parseFloat(responseRate.toFixed(3));
+      console.log(responseRate);
+      // return {type: SET_RATE_5, payload: responseRate};
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
