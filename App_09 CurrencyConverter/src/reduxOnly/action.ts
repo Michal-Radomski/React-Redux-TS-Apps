@@ -3,7 +3,7 @@ export const SET_RATE_5 = "SET_RATE_5";
 export const SET_CURRENCY1_5 = "SET_CURRENCY1_5";
 export const SET_CURRENCY2_5 = "SET_CURRENCY2_5";
 
-// Other Action Creators
+// Action Creators for setting up the currencies
 export const setCurrency1_5 = (firstCurrency5: string) => {
   return {type: SET_CURRENCY1_5, payload: firstCurrency5};
 };

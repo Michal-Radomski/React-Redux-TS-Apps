@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import {setCurrency1_5, setCurrency2_5} from "./action";
+import {setCurrency1_5, setCurrency2_5, SET_RATE_5} from "./action";
 import reduxStore from "./reduxStore";
 
 // API key
@@ -14,13 +14,13 @@ const CurrencyConverter5 = (): JSX.Element => {
   const [secondCurrency5Local, setSecondCurrency5Local] = React.useState(globalState.secondCurrency5);
   const [rate5Local, setRate5Local] = React.useState(globalState.rate5);
 
-  // console.log("Local State: ", firstCurrency5Local, secondCurrency5Local, rate5Local);
-  // console.log("globalState:", globalState);
+  console.log("Local State: ", firstCurrency5Local, secondCurrency5Local, rate5Local);
+  console.log("globalState:", globalState);
 
   reduxStore.subscribe(render);
   function render() {
     const reduxStoreState: State_5 = reduxStore.getState().currencies5;
-    // console.log("reduxStoreState:", reduxStoreState);
+    console.log("reduxStoreState:", reduxStoreState);
     setFirstCurrency5Local(reduxStoreState.firstCurrency5);
     setSecondCurrency5Local(reduxStoreState.secondCurrency5);
     setRate5Local(reduxStoreState.rate5);
@@ -33,9 +33,7 @@ const CurrencyConverter5 = (): JSX.Element => {
     setTimeout(function () {
       reduxStore.dispatch(setCurrency1_5(firstCurrency5Local));
       reduxStore.dispatch(setCurrency2_5(secondCurrency5Local));
-    }, 3000);
-
-    // reduxStore.dispatch(getRates5(firstCurrency5Local, secondCurrency5Local));
+    }, 1000);
 
     setTimeout(function () {
       render();
@@ -82,7 +80,7 @@ const getRates5: Fetch = async (firstCurrency5: string, secondCurrency5: string)
       let responseRate = response.data[`${firstCurrency5}_${secondCurrency5}`];
       responseRate = parseFloat(responseRate.toFixed(3));
       console.log(responseRate);
-      // return {type: SET_RATE_5, payload: responseRate};
+      reduxStore.dispatch({type: SET_RATE_5, payload: responseRate});
     })
     .catch((error) => {
       console.log(error);
