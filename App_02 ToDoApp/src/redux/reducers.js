@@ -1,3 +1,5 @@
+import {combineReducers} from "redux";
+
 const initState = {
   todos: [],
   text: "",
@@ -46,3 +48,9 @@ export const addTodo = (state = initState, action) => {
       return state;
   }
 };
+
+// const rootReducer = combineReducers({
+//   reducer:reducer,
+// });
+
+// export default rootReducer;

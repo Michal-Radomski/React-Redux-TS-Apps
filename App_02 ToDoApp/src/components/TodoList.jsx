@@ -2,7 +2,8 @@ import React from "react";
 import {connect} from "react-redux";
 import Todo from "./Todo";
 
-const TodoList = ({todos}) => {
+const TodoList = (props) => {
+  console.log(props);
   return (
     <div
       style={{
@@ -15,13 +16,13 @@ const TodoList = ({todos}) => {
         overflowX: "hidden",
       }}
     >
-      {todos.map((todo, i) => (
+      {props.todos.map((todo, i) => (
         <Todo key={i} todo={todo} idx={i} />
       ))}
     </div>
   );
 };
 const mapStateToProps = ({todos}) => ({
-  todos,
+  todos: todos,
 });
 export default connect(mapStateToProps)(TodoList);
