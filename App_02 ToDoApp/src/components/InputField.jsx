@@ -30,8 +30,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  text: state.text,
-  selected: state.selected,
+  text: state.globalState.text,
+  selected: state.globalState.selected,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputField);

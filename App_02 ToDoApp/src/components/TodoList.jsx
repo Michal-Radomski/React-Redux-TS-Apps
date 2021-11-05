@@ -3,8 +3,7 @@ import {connect} from "react-redux";
 
 import Todo from "./Todo";
 
-const TodoList = (props) => {
-  // console.log(props);
+const TodoList = ({todos}) => {
   return (
     <div
       style={{
@@ -18,14 +17,14 @@ const TodoList = (props) => {
         color: "darkviolet",
       }}
     >
-      {props.todos.map((todo, index) => (
+      {todos.map((todo, index) => (
         <Todo key={index} todo={todo} idx={index} />
       ))}
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  todos: state.todos,
+  todos: state.globalState.todos,
 });
 
 export default connect(mapStateToProps)(TodoList);

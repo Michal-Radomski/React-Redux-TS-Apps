@@ -1,4 +1,4 @@
-// import {combineReducers} from "redux";
+import {combineReducers} from "redux";
 
 const initState = {
   todos: [],
@@ -8,7 +8,7 @@ const initState = {
 
 const setPersist = (todos) => window.localStorage.setItem("todos2", JSON.stringify(todos));
 
-export const addTodo = (state = initState, action) => {
+const reducer = (state = initState, action) => {
   switch (action.type) {
     case "PERSIST_TODOS":
       const todos = JSON.parse(window.localStorage.getItem("todos2"));
@@ -23,7 +23,7 @@ export const addTodo = (state = initState, action) => {
       return {...state, todos: todos2, text: ""};
 
     case "DELETE_TODO":
-      const todo3 = state.todos.filter((_todo, i) => i !== action.payload);
+      const todo3 = state.todos.filter((_todo, index) => index !== action.payload);
       setPersist(todo3);
       return {
         ...state,
@@ -38,7 +38,7 @@ export const addTodo = (state = initState, action) => {
       };
 
     case "EDIT_ADD_TODO":
-      const todo4 = state.todos.map((todo, i) => (i !== action.payload.selected ? todo : action.payload.value));
+      const todo4 = state.todos.map((todo, index) => (index !== action.payload.selected ? todo : action.payload.value));
       setPersist(todo4);
       return {
         ...state,
@@ -56,8 +56,8 @@ export const addTodo = (state = initState, action) => {
   }
 };
 
-// const rootReducer = combineReducers({
-//   reducer:reducer,
-// });
+const rootReducer = combineReducers({
+  globalState: reducer,
+});
 
-// export default rootReducer;
+export default rootReducer;
