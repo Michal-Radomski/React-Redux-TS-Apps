@@ -6,10 +6,10 @@ import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
 import {deleteAll, persistTodos} from "./redux/actions";
 
-const App = ({deleteAll, persistTodos}) => {
+const App = (props) => {
   React.useEffect(() => {
     persistTodos();
-  }, [persistTodos]);
+  }, [props.persistTodos]);
 
   return (
     <div className="App">
@@ -17,7 +17,7 @@ const App = ({deleteAll, persistTodos}) => {
       <InputField />
       <TodoList />
       <div>
-        <button style={{marginTop: "20px", cursor: "pointer"}} onClick={deleteAll}>
+        <button style={{marginTop: "20px", cursor: "pointer"}} onClick={props.deleteAll}>
           Delete All
         </button>
       </div>

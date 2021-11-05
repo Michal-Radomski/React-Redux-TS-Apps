@@ -1,9 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
+
 import Todo from "./Todo";
 
 const TodoList = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div
       style={{
@@ -14,15 +15,17 @@ const TodoList = (props) => {
         height: "200px",
         overflowY: "auto",
         overflowX: "hidden",
+        color: "darkviolet",
       }}
     >
-      {props.todos.map((todo, i) => (
-        <Todo key={i} todo={todo} idx={i} />
+      {props.todos.map((todo, index) => (
+        <Todo key={index} todo={todo} idx={index} />
       ))}
     </div>
   );
 };
-const mapStateToProps = ({todos}) => ({
-  todos: todos,
+const mapStateToProps = (state) => ({
+  todos: state.todos,
 });
+
 export default connect(mapStateToProps)(TodoList);

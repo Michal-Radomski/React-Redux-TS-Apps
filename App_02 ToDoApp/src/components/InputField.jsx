@@ -3,7 +3,9 @@ import {connect} from "react-redux";
 
 import {addTodo, addText, editAddTodo} from "../redux/actions";
 
-const InputField = ({addText, text, selected, addTodo}) => {
+const InputField = (props) => {
+  const {addText, text, selected, addTodo} = props;
+
   const handleChange = (event) => addText(event.target.value);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,9 +29,9 @@ const mapDispatchToProps = (dispatch) => ({
   editAddTodo: (obj) => dispatch(editAddTodo(obj)),
 });
 
-const mapStateToProps = ({text, selected}) => ({
-  text,
-  selected,
+const mapStateToProps = (state) => ({
+  text: state.text,
+  selected: state.selected,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputField);

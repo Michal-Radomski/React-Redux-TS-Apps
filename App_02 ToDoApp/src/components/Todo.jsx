@@ -1,8 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
+
 import {deleteTodo, editTodo} from "../redux/actions";
 
-const Todo = ({todo, idx, deleteTodo, editTodo, selected, text}) => {
+const Todo = (props) => {
+  const {todo, idx, deleteTodo, editTodo, selected, text} = props;
   return (
     <div
       style={{
@@ -27,8 +29,9 @@ const mapDispatchToProps = (dispatch) => ({
   editTodo: (key) => dispatch(editTodo(key)),
 });
 
-const mapStateToProps = ({text, selected}) => ({
-  text,
-  selected,
+const mapStateToProps = (state) => ({
+  text: state.text,
+  selected: state.selected,
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(Todo);
