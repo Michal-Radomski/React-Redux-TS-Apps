@@ -1,3 +1,23 @@
 body {
-  background-color: whitesmoke;
+  background: #654ea3; /* fallback for old browsers */
+  background: linear-gradient(to right, #654ea3, #eaafc8);
+  color: #ffffffa6;
+  font-family: "Roboto", sans-serif;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  input {
+    background: border-box;
+    color: #ffffffa6;
+    border-top: none;
+    width: 200px;
+    padding: 5px;
+  }
+  button {
+    background: content-box;
+    color: #ffffffa6;
+    border: none;
+  }
 }
