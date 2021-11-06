@@ -3,17 +3,14 @@ import {connect} from "react-redux";
 
 import {addTodo, addText, editAddTodo} from "../redux/actions";
 
-const InputField = (props) => {
+const InputField = (props: {addText: any; text: string; selected: number; addTodo: any}): JSX.Element => {
   const {addText, text, selected, addTodo} = props;
 
-  const handleChange = (event) => addText(event.target.value);
-  const handleSubmit = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => addText(event.target.value);
+  const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
-    if (selected || selected === 0)
-      editAddTodo({
-        value: text,
-        selected: selected,
-      });
+    const obj: any = {value: text, selected: selected};
+    if (selected || selected === 0) editAddTodo(obj);
     else addTodo(text);
   };
   return (
@@ -23,13 +20,13 @@ const InputField = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addTodo: (todo) => dispatch(addTodo(todo)),
-  addText: (value) => dispatch(addText(value)),
-  editAddTodo: (obj) => dispatch(editAddTodo(obj)),
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  addTodo: (todo: Todo) => dispatch(addTodo(todo)),
+  addText: (value: string) => dispatch(addText(value)),
+  editAddTodo: (obj: Todo) => dispatch(editAddTodo(obj)),
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   text: state.globalState.text,
   selected: state.globalState.selected,
 });

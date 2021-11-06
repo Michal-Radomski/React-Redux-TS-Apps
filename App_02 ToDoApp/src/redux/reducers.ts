@@ -6,12 +6,13 @@ const initState = {
   selected: undefined,
 };
 
-const setPersist = (todos) => window.localStorage.setItem("todos2", JSON.stringify(todos));
+const setPersist = (todos: Todos) => window.localStorage.setItem("todos2", JSON.stringify(todos));
 
-const reducer = (state = initState, action) => {
+const reducer = (state = initState, action: Action) => {
   switch (action.type) {
     case "PERSIST_TODOS":
-      const todos = JSON.parse(window.localStorage.getItem("todos2"));
+      const storage: any = window.localStorage.getItem("todos2");
+      const todos = JSON.parse(storage);
       return {...state, todos: todos ? todos : []};
 
     case "ADD_TEXT":

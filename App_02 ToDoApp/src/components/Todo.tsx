@@ -1,9 +1,16 @@
-import React from "react";
+// import React from "react";
 import {connect} from "react-redux";
 
 import {deleteTodo, editTodo} from "../redux/actions";
 
-const Todo = (props) => {
+const Todo = (props: {
+  todo: Todo;
+  idx: number;
+  deleteTodo: any;
+  editTodo: any;
+  selected: number;
+  text: string;
+}): JSX.Element => {
   const {todo, idx, deleteTodo, editTodo, selected, text} = props;
   return (
     <div
@@ -24,12 +31,12 @@ const Todo = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  deleteTodo: (key) => dispatch(deleteTodo(key)),
-  editTodo: (key) => dispatch(editTodo(key)),
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  deleteTodo: (key: number) => dispatch(deleteTodo(key)),
+  editTodo: (key: number) => dispatch(editTodo(key)),
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   text: state.globalState.text,
   selected: state.globalState.selected,
 });

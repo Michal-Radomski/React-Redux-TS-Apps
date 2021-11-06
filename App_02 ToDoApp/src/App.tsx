@@ -6,7 +6,7 @@ import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
 import {deleteAll, persistTodos} from "./redux/actions";
 
-const App = (props) => {
+const App = (props: {deleteAll: any; persistTodos: any}): JSX.Element => {
   const {deleteAll, persistTodos} = props;
   React.useEffect(() => {
     persistTodos();
@@ -26,7 +26,7 @@ const App = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
   deleteAll: () => dispatch(deleteAll()),
   persistTodos: () => dispatch(persistTodos()),
 });

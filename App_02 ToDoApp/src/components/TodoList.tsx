@@ -1,9 +1,9 @@
-import React from "react";
+// import React from "react";
 import {connect} from "react-redux";
 
 import Todo from "./Todo";
 
-const TodoList = ({todos}) => {
+const TodoList = ({todos}: RootState): JSX.Element => {
   return (
     <div
       style={{
@@ -17,13 +17,13 @@ const TodoList = ({todos}) => {
         color: "darkviolet",
       }}
     >
-      {todos.map((todo, index) => (
+      {todos.map((todo: Todo, index: number) => (
         <Todo key={index} todo={todo} idx={index} />
       ))}
     </div>
   );
 };
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   todos: state.globalState.todos,
 });
 
