@@ -5,11 +5,13 @@ axios.defaults.baseURL = "https://earthquake.usgs.gov";
 // configure headers
 axios.interceptors.request.use(
   (config: any) => {
+    // console.log("config:", config);
     if (!config.headers.Authorization) {
       const token = localStorage.getItem("authToken");
 
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
+        // console.log("token:", token);
       }
     }
     return config;
@@ -17,9 +19,11 @@ axios.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-export default {
+const httpService = {
   get: axios.get,
   post: axios.post,
   put: axios.put,
   delete: axios.delete,
 };
+
+export default httpService;

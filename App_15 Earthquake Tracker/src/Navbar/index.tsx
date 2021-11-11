@@ -1,12 +1,12 @@
-import React, {FC, useState} from "react";
+import React from "react";
 import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav} from "reactstrap";
 import DropdownList from "./DropdownList";
 import NavBarForm from "./NavbarForm";
 
 const brandStyle = {color: "#ffffff"};
 
-const NavBar: FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const NavBar: React.FC = (): JSX.Element => {
+  const [isOpen, setIsOpen] = React.useState(false);
   const toggleNavbar = () => setIsOpen(!isOpen);
   return (
     <>

@@ -1,13 +1,13 @@
-import React, {FC} from "react";
+import React from "react";
 import {Map, TileLayer, LayersControl, GeoJSON, ScaleControl} from "react-leaflet";
 
 import Earthquakes from "./Earthquakes";
 import Legend from "./Legend";
 import tectonicPlates from "./PB2002_boundaries.json";
 import {tectonicPlatesStyle, tileLayers} from "./constants";
-import styles from "./index.module.sass";
+import styles from "./index.module.scss";
 
-const Leaflet: FC = () => {
+const Leaflet: React.FC = (): JSX.Element => {
   return (
     <Map center={[0, 0]} zoom={3} className={styles.map}>
       <LayersControl position="topright">

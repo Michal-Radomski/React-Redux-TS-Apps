@@ -1,7 +1,6 @@
 import {Layer} from "leaflet";
-import {IFeature} from "./models";
 
-// Convert Epoch time to human readable with specific timezone
+// Convert Epoch Linux Time to human readable with specific timezone
 const timeConverter = (time: number, offset: number): string => {
   const d = new Date(time);
   const utc = d.getTime() + d.getTimezoneOffset() * 60000; // This converts to UTC 00:00

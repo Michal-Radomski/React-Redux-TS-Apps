@@ -1,25 +1,24 @@
-import types from './types';
-import { IAction } from '../store/models';
+import types from "./types";
 
 const changeStartTime = (startTime: string): IAction => ({
-    type: types.startTimeChanged,
-    payload: {
-        startTime
-    }
+  type: types.startTimeChanged,
+  payload: {
+    startTime,
+  },
 });
 
 const changeEndTime = (endTime: string): IAction => ({
-    type: types.endTimeChanged,
-    payload: {
-        endTime
-    }
+  type: types.endTimeChanged,
+  payload: {
+    endTime,
+  },
 });
 
 const changeNumOfDays = (numOfDays: string): IAction => ({
-    type: types.numOfDaysChanged,
-    payload: {
-        numOfDays
-    }
+  type: types.numOfDaysChanged,
+  payload: {
+    numOfDays,
+  },
 });
 
-export { changeStartTime, changeEndTime, changeNumOfDays };
+export {changeStartTime, changeEndTime, changeNumOfDays};
