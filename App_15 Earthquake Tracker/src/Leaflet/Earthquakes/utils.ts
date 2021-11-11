@@ -17,12 +17,12 @@ const onEachFeature = (feature: IFeature, layer: Layer) => {
   const popupContent = `
         <h3 style="font-size: 1.17em; font-weight: bold">${title}</h3>
         <b>Place</b>: ${place} <br>
-        <b>Time (GMC /UTC/)</b>: ${timeConverter(time, 0)} <br>
+        <b>Time (GMC /UTC)</b>: ${timeConverter(time, 0)} <br>
         <b>Lat</b>: ${coordinates[1]}
         <b>Lon</b>: ${coordinates[0]} <br>
         <b>Depth</b>: ${coordinates[2]} km <br>
         <b>Magnitude</b>: <h3>${mag}</h3> Richter <br>
-        <b>Details</b>: <a href=${url}>click here to see more details</a>
+        <b>Details</b>: <a target="_blank" href=${url}>click here to see more details</a>
     `;
 
   layer.bindPopup(popupContent);

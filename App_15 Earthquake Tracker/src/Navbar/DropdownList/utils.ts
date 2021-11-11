@@ -9,6 +9,8 @@ const convertDropdownValue = (dropdownvalue: string): string => {
       return `${now}10days`;
     case "20 days":
       return `${now}20days`;
+    case "205days":
+      return `${now}25days`;
     case "30 days":
       return `${now}30days`;
     default:
