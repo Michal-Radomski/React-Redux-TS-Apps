@@ -62,4 +62,5 @@ Applications written in **TS using React and Redux**:
     React->React-Redux and JS->TS like above. Covid-19 data is retrieved from
     [mathdroid/covid-19-api](https://github.com/mathdroid/covid-19-api).
 
-15. App_15 (React+Redux+TS) is written according to this [tutorial](https://www.youtube.com/watch?v=J-BV1fLqCu0).
+15. App_15 (React+Redux+TS) is written according to this [tutorial](https://www.youtube.com/watch?v=J-BV1fLqCu0). The data is
+    retrieved from [U.S. Geological Survey API](https://earthquake.usgs.gov/fdsnws/event/1/).
