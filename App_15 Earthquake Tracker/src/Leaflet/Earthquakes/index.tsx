@@ -10,7 +10,7 @@ import {geojsonMarkerOptions} from "../utils";
 
 let geojson: GeoJSON;
 
-const Earthquakes: React.FC = () => {
+const Earthquakes: React.FC = (): JSX.Element => {
   const {startTime, endTime} = useSelector(({navbar}: RootState) => navbar);
   const [earthquakes, loading] = useEarthquakesFetcher(startTime, endTime);
   const {map} = useLeaflet();
@@ -29,9 +29,9 @@ const Earthquakes: React.FC = () => {
     if (map) geojson.addTo(map);
   }, [earthquakes, map]);
 
-  if (loading) return <Spinner />;
+  const Loading: any = loading ? <Spinner /> : null;
 
-  return null;
+  return Loading;
 };
 
 export default Earthquakes;

@@ -35,7 +35,11 @@ const NavBarForm = (): JSX.Element => {
   };
 
   return (
-    <form className={`form-inline my-lg-0 ${styles.form}`} onSubmit={onSubmit}>
+    <form
+      className={`form-inline my-lg-0 ${styles.form}`}
+      onSubmit={onSubmit}
+      style={{display: "flex", flexDirection: "row", justifyContent: "spaceAround", minWidth: "550px"}}
+    >
       <div className={`input-group ${styles.startTime}`}>
         <input
           className="form-control"
@@ -44,6 +48,7 @@ const NavBarForm = (): JSX.Element => {
           aria-label="Search"
           value={startTime}
           onChange={onStartTimeChange}
+          style={{margin: "0 10px"}}
         />
         <div className="input-group-append mr-sm-2">
           <span className="input-group-text">
@@ -67,6 +72,7 @@ const NavBarForm = (): JSX.Element => {
         aria-label="Search"
         value={endTime}
         onChange={onEndTimeChange}
+        style={{margin: "0 10px"}}
       />
       <InfoTip target="endTime" tooltipOpen={endTimeTooltipOpen} setTooltipOpen={setEndTimeTooltipOpen} />
       <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
